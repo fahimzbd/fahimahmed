@@ -60,6 +60,28 @@
   }
   .nav-cta:hover { background: var(--gold-light); }
 
+  /* ── MOBILE NAV (hamburger) ── */
+  .nav-toggle {
+    display: none;
+    flex-direction: column; justify-content: center; align-items: center;
+    gap: 5px; width: 44px; height: 44px;
+    background: none; border: none; cursor: pointer; padding: 0; z-index: 110;
+  }
+  .nav-toggle span {
+    display: block; width: 24px; height: 2px; border-radius: 2px;
+    background: var(--gold); transition: transform .3s ease, opacity .25s ease;
+  }
+  .nav-toggle.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .nav-toggle.open span:nth-child(2) { opacity: 0; }
+  .nav-toggle.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+  .nav-backdrop {
+    position: fixed; inset: 0; z-index: 90;
+    background: rgba(8,6,4,0.55); -webkit-backdrop-filter: blur(2px); backdrop-filter: blur(2px);
+    opacity: 0; visibility: hidden; transition: opacity .3s ease, visibility .3s ease;
+  }
+  .nav-backdrop.show { opacity: 1; visibility: visible; }
+  .nav-cta-mobile-item { display: none; }
+
   /* BLOG HERO */
   .blog-hero {
     padding: 9rem 6% 4rem;
@@ -207,7 +229,32 @@
     .post-card.featured { grid-column: span 1; }
     .form-row { grid-template-columns: 1fr; }
     nav { padding: 1rem 4%; }
-    .nav-links { display: none; }
+    .nav-toggle { display: flex; }
+    nav .nav-cta { display: none; }
+    .nav-links {
+      position: fixed; top: 0; right: 0;
+      height: 100vh; height: 100dvh; width: min(82vw, 300px);
+      flex-direction: column; align-items: stretch; gap: 0;
+      background: var(--surface); border-left: 1px solid var(--border);
+      padding: 5.25rem 1.6rem 2rem;
+      transform: translateX(105%);
+      transition: transform .38s cubic-bezier(.4,0,.2,1);
+      box-shadow: -24px 0 60px rgba(0,0,0,.5);
+      z-index: 100; overflow-y: auto;
+    }
+    .nav-links.open { transform: translateX(0); }
+    .nav-links li { width: 100%; }
+    .nav-links a {
+      display: block; padding: 1rem 0; font-size: 0.95rem;
+      color: var(--text); border-bottom: 1px solid var(--border);
+    }
+    .nav-links .nav-cta-mobile-item { display: block; }
+    .nav-links .nav-cta-mobile {
+      margin-top: 1.4rem; text-align: center; border-bottom: none;
+      background: var(--gold); color: var(--dark);
+      padding: 0.9rem; border-radius: 4px; font-weight: 600;
+      text-transform: uppercase; letter-spacing: 0.06em;
+    }
   }
 
   /* ANIMATIONS */
@@ -247,16 +294,21 @@
 <!-- NAV -->
 <nav>
   <a href="index.html" class="nav-logo">FA</a>
-  <ul class="nav-links">
+  <ul class="nav-links" id="navLinks">
     <li><a href="index.html#about">About</a></li>
     <li><a href="index.html#experience">Experience</a></li>
     <li><a href="index.html#skills">Skills</a></li>
     <li><a href="index.html#contact">Contact</a></li>
     <li><a href="fahim_ahmed_blog.html" class="active">Blog</a></li>
     <li><a href="resources.html" style="color:var(--gold-light);font-weight:500;">Resources ✦</a></li>
+      <li class="nav-cta-mobile-item"><a href="https://www.linkedin.com/in/fahim-ahmedz/" target="_blank" class="nav-cta-mobile">Connect &rarr;</a></li>
   </ul>
-  <a href="https://www.linkedin.com/in/fahim-ahmedz/" target="_blank" class="nav-cta">Connect →</a>
+  <a href="https://www.linkedin.com/in/fahim-ahmedz/" target="_blank" class="nav-cta">Connect &rarr;</a>
+  <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
+<div class="nav-backdrop" id="navBackdrop"></div>
 
 <!-- HERO -->
 <div class="blog-hero">
@@ -435,6 +487,20 @@
   }
 
   renderPosts();
+</script>
+<script>
+  (function(){
+    var t=document.getElementById('navToggle'),
+        l=document.getElementById('navLinks'),
+        b=document.getElementById('navBackdrop');
+    if(!t||!l)return;
+    function open(){l.classList.add('open');t.classList.add('open');if(b)b.classList.add('show');t.setAttribute('aria-expanded','true');document.body.style.overflow='hidden';}
+    function close(){l.classList.remove('open');t.classList.remove('open');if(b)b.classList.remove('show');t.setAttribute('aria-expanded','false');document.body.style.overflow='';}
+    t.addEventListener('click',function(){l.classList.contains('open')?close():open();});
+    if(b)b.addEventListener('click',close);
+    Array.prototype.forEach.call(l.querySelectorAll('a'),function(a){a.addEventListener('click',close);});
+    window.addEventListener('resize',function(){if(window.innerWidth>768)close();});
+  })();
 </script>
 </body>
 </html>
