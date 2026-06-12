@@ -558,7 +558,7 @@
       <div class="success-icon">✦</div>
       <h3>You're all set!</h3>
       <p>Thank you! Your free guide is ready. Click below to download your copy.</p>
-      <a href="#" id="driveLink" class="btn-download-now" target="_blank" rel="noopener">
+      <a href="#" id="driveLink" class="btn-download-now" download="UK-VAT-Tax-Compliance-Guide-2025.pdf" rel="noopener">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
         Download Now
       </a>
@@ -579,8 +579,9 @@
   // ── তোমার Google Apps Script URL এখানে বসাও ──
   const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxS2ciOwb3kY_4MirmdV7p0kG_He9UTqqwDcGpLHOElX4e0XsLeZfAUj6hmIsICXqR-/exec';
 
-  // ── তোমার Google Drive share link এখানে বসাও ──
-  const DRIVE_LINK = 'https://drive.google.com/file/d/1NFVdVcxN_UsCUChIPpLlP10F1tfw7dFG/view?usp=sharing';
+  // ── PDF এখন GitHub-এ হোস্ট করা (একই সাইট, ডিরেক্ট ডাউনলোড) ──
+  // রিপোর জড়ে (root) এই নামে PDF টা আপলোড করতে হবে।
+  const DRIVE_LINK = 'UK-VAT-Tax-Compliance-Guide-2025.pdf';
 
   function openModal() {
     document.getElementById('modalOverlay').classList.add('open');
