@@ -4,18 +4,20 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Fahim Ahmed | Accountant & Tax Specialist</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,900&family=Caveat:wght@600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
 <style>
   :root {
-    --gold: #C9A84C;
-    --gold-light: #E8C96A;
-    --dark: #0D0D0D;
-    --darker: #080808;
-    --surface: #141414;
-    --surface2: #1C1C1C;
-    --text: #E8E4DC;
-    --muted: #888;
-    --border: rgba(201,168,76,0.2);
+    --gold: #D17A45;
+    --gold-light: #E8B84B;
+      --honey: #E8B84B;
+      --rust: #D17A45;
+    --dark: #17120C;
+    --darker: #110D09;
+    --surface: #1E1812;
+    --surface2: #271F17;
+    --text: #ECE4D4;
+    --muted: #9C9080;
+    --border: rgba(213,138,78,0.22);
   }
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -33,12 +35,12 @@
     position: fixed; top: 0; left: 0; right: 0; z-index: 100;
     display: flex; align-items: center; justify-content: space-between;
     padding: 1.2rem 6%;
-    background: rgba(8,8,8,0.85);
+    background: rgba(17,13,9,0.82);
     backdrop-filter: blur(14px);
     border-bottom: 1px solid var(--border);
   }
   .nav-logo {
-    font-family: 'Playfair Display', serif;
+    font-family: 'Fraunces', serif;
     font-size: 1.2rem; font-weight: 700;
     color: var(--gold); letter-spacing: 0.05em;
     text-decoration: none;
@@ -72,7 +74,7 @@
     content: '';
     position: absolute; top: 0; right: 0;
     width: 55%; height: 100%;
-    background: radial-gradient(ellipse at 80% 40%, rgba(201,168,76,0.07) 0%, transparent 65%);
+    background: radial-gradient(ellipse at 80% 40%, rgba(213,138,78,0.07) 0%, transparent 65%);
     pointer-events: none;
   }
   .hero-label {
@@ -82,7 +84,7 @@
     padding: 0.35rem 0.9rem; border-radius: 2px; margin-bottom: 1.5rem;
   }
   .hero-name {
-    font-family: 'Playfair Display', serif;
+    font-family: 'Fraunces', serif;
     font-size: clamp(3rem, 6vw, 5.5rem);
     font-weight: 900; line-height: 1.05;
     color: var(--text); margin-bottom: 1rem;
@@ -137,7 +139,7 @@
   }
   .stat:last-child { border-right: none; }
   .stat-num {
-    font-family: 'Playfair Display', serif;
+    font-family: 'Fraunces', serif;
     font-size: 2rem; font-weight: 700; color: var(--gold);
     display: block;
   }
@@ -150,7 +152,7 @@
     color: var(--gold); margin-bottom: 0.8rem;
   }
   .section-title {
-    font-family: 'Playfair Display', serif;
+    font-family: 'Fraunces', serif;
     font-size: clamp(1.8rem, 3.5vw, 2.8rem); font-weight: 700;
     color: var(--text); margin-bottom: 3rem;
     line-height: 1.2;
@@ -202,7 +204,7 @@
     color: var(--gold); margin-bottom: 0.4rem;
   }
   .tl-title {
-    font-family: 'Playfair Display', serif;
+    font-family: 'Fraunces', serif;
     font-size: 1.3rem; font-weight: 700; color: var(--text);
     margin-bottom: 0.2rem;
   }
@@ -256,7 +258,7 @@
     border: 1px solid var(--border);
   }
   .edu-degree {
-    font-family: 'Playfair Display', serif;
+    font-family: 'Fraunces', serif;
     font-size: 1.2rem; font-weight: 700; color: var(--text);
     margin-bottom: 0.3rem;
   }
@@ -283,7 +285,7 @@
     font-size: 0.85rem; letter-spacing: 0.05em;
     transition: border-color 0.2s, color 0.2s, background 0.2s;
   }
-  .contact-link:hover { border-color: var(--gold); color: var(--gold); background: rgba(201,168,76,0.05); }
+  .contact-link:hover { border-color: var(--gold); color: var(--gold); background: rgba(213,138,78,0.05); }
   .contact-link svg { width: 18px; height: 18px; fill: currentColor; }
 
   /* FOOTER */
@@ -322,6 +324,30 @@
     nav { padding: 1rem 4%; }
     .nav-links { display: none; }
   }
+
+  /* ── STORYBOOK THEME OVERRIDES ── */
+  body { background: var(--darker); }
+  /* faint paper dot-grid texture */
+  body::after{
+    content:''; position:fixed; inset:0; pointer-events:none; z-index:0;
+    background-image: radial-gradient(rgba(213,138,78,0.045) 1px, transparent 1px);
+    background-size: 24px 24px;
+  }
+  /* handwritten honey eyebrow badge (the storybook signature) */
+  .hero-label{
+    font-family:'Caveat', cursive !important;
+    text-transform:none !important; letter-spacing:0 !important;
+    font-size:1.25rem !important; font-weight:700 !important; line-height:1 !important;
+    background:var(--honey) !important; color:#3a2a12 !important;
+    border:none !important; padding:0.3rem 1.1rem 0.45rem !important;
+    border-radius:999px !important;
+  }
+  /* Fraunces optical sizing for big display headings */
+  h1, .hero-name, .page-hero h1, .article-title, .card-title, .rc-title,
+  .blog-hero h1, .modal h2, .success-state h3, .bio-name {
+    font-variation-settings:'opsz' 120; letter-spacing:-0.01em;
+  }
+
 </style>
 </head>
 <body>
@@ -433,9 +459,9 @@
       <p style="font-size:0.78rem;color:var(--muted);letter-spacing:0.06em;text-transform:uppercase;margin-bottom:1.5rem;">EdTech · Full-time</p>
 
       <!-- Role 1: Team Leader -->
-      <div style="border-left:2px solid rgba(201,168,76,0.25);padding-left:1.5rem;margin-bottom:2rem;">
+      <div style="border-left:2px solid rgba(213,138,78,0.25);padding-left:1.5rem;margin-bottom:2rem;">
         <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:0.5rem;margin-bottom:0.4rem;">
-          <h4 style="font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;color:var(--text);">Team Leader – Accounts & Finance</h4>
+          <h4 style="font-family:'Fraunces', serif;font-size:1.1rem;font-weight:700;color:var(--text);">Team Leader – Accounts & Finance</h4>
           <span class="tl-date" style="font-size:0.72rem;">Jul 2025 – Present · 1 yr</span>
         </div>
         <p class="tl-desc">Led the accounts and finance team, ensuring efficient financial operations and accurate reporting across multiple entities. Managed VAT and corporate tax compliance for UK clients while supervising daily accounting activities including bookkeeping, reconciliations, and financial statement preparation. Collaborated with cross-functional teams to improve financial processes and support strategic decision-making.</p>
@@ -451,9 +477,9 @@
       </div>
 
       <!-- Role 2: Trainee Team Leader -->
-      <div style="border-left:2px solid rgba(201,168,76,0.15);padding-left:1.5rem;margin-bottom:2rem;">
+      <div style="border-left:2px solid rgba(213,138,78,0.15);padding-left:1.5rem;margin-bottom:2rem;">
         <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:0.5rem;margin-bottom:0.4rem;">
-          <h4 style="font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;color:var(--text);">Trainee Team Leader – Accounts & Finance</h4>
+          <h4 style="font-family:'Fraunces', serif;font-size:1.1rem;font-weight:700;color:var(--text);">Trainee Team Leader – Accounts & Finance</h4>
           <span class="tl-date" style="font-size:0.72rem;">Oct 2024 – Jun 2025 · 9 mos</span>
         </div>
         <p class="tl-desc">Supported the accounts and finance function with a strong focus on UK-based accounting and taxation. Gained hands-on experience in managing financial records, preparing statutory accounts, and ensuring compliance with UK regulations. Assisted in handling multi-entity accounting operations while working with cloud-based accounting systems to maintain accuracy and efficiency.</p>
@@ -469,9 +495,9 @@
       </div>
 
       <!-- Role 3: Executive -->
-      <div style="border-left:2px solid rgba(201,168,76,0.15);padding-left:1.5rem;">
+      <div style="border-left:2px solid rgba(213,138,78,0.15);padding-left:1.5rem;">
         <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:0.5rem;margin-bottom:0.4rem;">
-          <h4 style="font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;color:var(--text);">Executive – Accounts & Finance</h4>
+          <h4 style="font-family:'Fraunces', serif;font-size:1.1rem;font-weight:700;color:var(--text);">Executive – Accounts & Finance</h4>
           <span class="tl-date" style="font-size:0.72rem;">Aug 2023 – Oct 2024 · 1 yr 3 mos</span>
         </div>
         <p class="tl-desc">Managed financial operations within a fast-growing EdTech environment, supporting multi-platform revenue tracking and instructor payment processes. Worked extensively with data from CMS platforms like WordPress and Shopify to ensure accurate financial reporting and reconciliation.</p>
