@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Blog | Fahim Ahmed</title>
+<title>Understanding UK VAT Returns | Fahim Ahmed</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
   :root {
@@ -24,7 +24,6 @@
     background: var(--darker);
     color: var(--text);
     overflow-x: hidden;
-    min-height: 100vh;
   }
 
   /* NAV */
@@ -37,158 +36,203 @@
     border-bottom: 1px solid var(--border);
   }
   .nav-logo {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.2rem; font-weight: 700;
-    color: var(--gold); letter-spacing: 0.05em;
-    text-decoration: none;
+    font-family: 'Playfair Display', serif; font-size: 1.2rem; font-weight: 700;
+    color: var(--gold); letter-spacing: 0.05em; text-decoration: none;
   }
-  .nav-links { display: flex; gap: 2rem; list-style: none; }
-  .nav-links a {
-    text-decoration: none; color: var(--muted);
-    font-size: 0.82rem; letter-spacing: 0.1em; text-transform: uppercase;
-    transition: color 0.25s;
+  .nav-back {
+    font-size: 0.8rem; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--muted); text-decoration: none; transition: color 0.2s;
   }
-  .nav-links a:hover, .nav-links a.active { color: var(--gold); }
-  .nav-cta {
-    background: var(--gold); color: var(--dark);
-    padding: 0.5rem 1.2rem; border-radius: 2px;
-    font-size: 0.8rem; font-weight: 500; letter-spacing: 0.08em;
-    text-decoration: none; text-transform: uppercase;
-    transition: background 0.2s;
-  }
-  .nav-cta:hover { background: var(--gold-light); }
+  .nav-back:hover { color: var(--gold); }
 
-  /* BLOG HERO */
-  .blog-hero {
-    padding: 9rem 6% 4rem;
+  /* HERO */
+  .article-hero {
+    padding: 8rem 0 0;
     background: var(--surface);
     border-bottom: 1px solid var(--border);
-    position: relative; overflow: hidden;
   }
-  .blog-hero::before {
-    content: '';
-    position: absolute; top: 0; right: 0;
-    width: 40%; height: 100%;
-    background: radial-gradient(ellipse at 80% 50%, rgba(201,168,76,0.06) 0%, transparent 70%);
-    pointer-events: none;
+  .hero-inner {
+    max-width: 860px; margin: 0 auto; padding: 3rem 2rem 0;
   }
-  .blog-hero-inner { max-width: 760px; }
-  .hero-label {
+  .article-cat {
     display: inline-block;
-    font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase;
+    font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase;
     color: var(--gold); border: 1px solid var(--border);
-    padding: 0.35rem 0.9rem; border-radius: 2px; margin-bottom: 1.2rem;
+    padding: 0.35rem 0.9rem; border-radius: 2px; margin-bottom: 1.5rem;
   }
-  .blog-hero h1 {
+  .article-title {
     font-family: 'Playfair Display', serif;
-    font-size: clamp(2.4rem, 5vw, 4rem);
-    font-weight: 900; line-height: 1.1; color: var(--text);
-    margin-bottom: 1rem;
+    font-size: clamp(2rem, 5vw, 3.2rem);
+    font-weight: 900; line-height: 1.15; color: var(--text);
+    margin-bottom: 1.2rem;
   }
-  .blog-hero h1 span { color: var(--gold); }
-  .blog-hero p {
-    font-size: 1rem; color: var(--muted); line-height: 1.8; max-width: 540px;
+  .article-title span { color: var(--gold); }
+  .article-subtitle {
+    font-size: 1.1rem; color: var(--muted); line-height: 1.7;
+    max-width: 680px; margin-bottom: 2rem;
+  }
+  .article-meta {
+    display: flex; align-items: center; gap: 1.5rem; flex-wrap: wrap;
+    padding: 1.5rem 0; border-top: 1px solid var(--border);
+  }
+  .author-wrap { display: flex; align-items: center; gap: 0.8rem; }
+  .author-avatar {
+    width: 44px; height: 44px; border-radius: 50%;
+    border: 2px solid var(--gold); object-fit: cover; object-position: top;
+  }
+  .author-avatar-fallback {
+    width: 44px; height: 44px; border-radius: 50%;
+    border: 2px solid var(--gold);
+    background: var(--surface2); display: flex; align-items: center;
+    justify-content: center; font-family: 'Playfair Display', serif;
+    font-size: 1rem; color: var(--gold); font-weight: 700;
+  }
+  .author-name { font-size: 0.88rem; color: var(--text); font-weight: 500; }
+  .author-role { font-size: 0.75rem; color: var(--muted); }
+  .meta-sep { width: 1px; height: 32px; background: var(--border); }
+  .meta-item { font-size: 0.78rem; color: var(--muted); }
+  .meta-item strong { color: var(--gold); }
+
+  /* HERO VISUAL BANNER */
+  .hero-banner {
+    max-width: 860px; margin: 2rem auto 0; padding: 0 2rem;
+  }
+  .hero-banner svg { width: 100%; border-radius: 4px 4px 0 0; display: block; }
+
+  /* ARTICLE BODY */
+  .article-body {
+    max-width: 860px; margin: 0 auto;
+    padding: 3rem 2rem 5rem;
   }
 
-  /* FILTERS */
-  .blog-filters {
-    padding: 1.8rem 6%;
-    display: flex; gap: 0.8rem; flex-wrap: wrap;
-    border-bottom: 1px solid var(--border);
-    background: var(--surface);
+  /* TYPOGRAPHY */
+  .article-body p {
+    font-size: 1.02rem; line-height: 1.9; color: #C0BDB5;
+    margin-bottom: 1.5rem;
   }
-  .filter-btn {
-    font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase;
-    border: 1px solid var(--border); color: var(--muted);
-    padding: 0.4rem 1rem; border-radius: 2px; cursor: pointer;
-    background: none; font-family: 'DM Sans', sans-serif;
-    transition: all 0.2s;
+  .article-body h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.7rem; font-weight: 700; color: var(--text);
+    margin: 3rem 0 1rem; line-height: 1.3;
   }
-  .filter-btn:hover, .filter-btn.active { border-color: var(--gold); color: var(--gold); background: rgba(201,168,76,0.05); }
+  .article-body h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem; font-weight: 700; color: var(--text);
+    margin: 2rem 0 0.7rem;
+  }
+  .article-body strong { color: var(--gold); font-weight: 500; }
+  .article-body em { color: #aaa; font-style: italic; }
 
-  /* BLOG GRID */
-  .blog-main {
-    padding: 4rem 6%;
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 2rem;
-    align-items: start;
+  /* INLINE VISUALS */
+  .article-visual {
+    margin: 2.5rem 0;
+    border: 1px solid var(--border);
+    border-radius: 4px; overflow: hidden;
+    background: var(--surface2);
+  }
+  .article-visual svg { width: 100%; display: block; }
+  .visual-caption {
+    font-size: 0.78rem; color: var(--muted); text-align: center;
+    padding: 0.7rem 1rem; border-top: 1px solid var(--border);
+    font-style: italic;
   }
 
-  /* FEATURED (spans 2 cols) */
-  .post-card {
+  /* CALLOUT BOX */
+  .callout {
+    background: rgba(201,168,76,0.06);
+    border-left: 3px solid var(--gold);
+    padding: 1.2rem 1.5rem; margin: 2rem 0; border-radius: 0 4px 4px 0;
+  }
+  .callout p { margin: 0; font-size: 0.95rem; color: #C0BDB5; }
+  .callout strong { color: var(--gold); }
+
+  /* INFO BOX */
+  .info-box {
     background: var(--surface2);
     border: 1px solid var(--border);
-    border-radius: 4px;
-    overflow: hidden;
-    transition: border-color 0.25s, transform 0.25s;
-    cursor: pointer;
+    padding: 1.5rem 2rem; margin: 2rem 0; border-radius: 4px;
   }
-  .post-card:hover { border-color: var(--gold); transform: translateY(-4px); }
-  .post-card.featured { grid-column: span 2; }
-  .post-img {
-    width: 100%; aspect-ratio: 16/9;
-    background: var(--surface);
-    display: flex; align-items: center; justify-content: center;
-    font-size: 2.5rem; color: var(--border);
-    border-bottom: 1px solid var(--border);
-    position: relative; overflow: hidden;
+  .info-box-title {
+    font-size: 0.72rem; letter-spacing: 0.15em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 1rem;
   }
-  .post-img.featured-img { aspect-ratio: 21/9; }
-  .post-img img {
-    position: absolute; inset: 0;
-    width: 100%; height: 100%; object-fit: cover;
-    transition: transform 0.4s ease;
-  }
-  .post-card:hover .post-img img { transform: scale(1.04); }
-  .post-img-overlay {
-    position: absolute; inset: 0;
-    background: linear-gradient(to bottom, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.55) 100%);
-    z-index: 1;
-  }
-  .post-img-bg {
-    position: absolute; inset: 0;
-    background: linear-gradient(135deg, var(--surface) 0%, #1a1508 100%);
-  }
-  .post-img-icon { position: relative; z-index: 1; }
-  .post-body { padding: 1.5rem; }
-  .post-meta {
-    display: flex; gap: 1rem; align-items: center;
-    margin-bottom: 0.8rem;
-  }
-  .post-cat {
-    font-size: 0.68rem; letter-spacing: 0.15em; text-transform: uppercase;
-    color: var(--gold); border: 1px solid var(--border);
-    padding: 0.25rem 0.6rem; border-radius: 2px;
-  }
-  .post-date { font-size: 0.72rem; color: var(--muted); }
-  .post-title {
+  .info-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+  .info-item { text-align: center; padding: 0.8rem; }
+  .info-num {
     font-family: 'Playfair Display', serif;
-    font-size: 1.1rem; font-weight: 700; color: var(--text);
-    line-height: 1.4; margin-bottom: 0.6rem;
+    font-size: 1.8rem; font-weight: 700; color: var(--gold);
+    display: block; margin-bottom: 0.3rem;
   }
-  .post-card.featured .post-title { font-size: 1.5rem; }
-  .post-excerpt { font-size: 0.85rem; color: var(--muted); line-height: 1.7; margin-bottom: 1.2rem; }
-  .post-read {
-    font-size: 0.78rem; color: var(--gold); letter-spacing: 0.08em;
-    text-transform: uppercase; text-decoration: none;
-    display: inline-flex; align-items: center; gap: 0.4rem;
-  }
-  .post-read::after { content: '→'; transition: transform 0.2s; }
-  .post-card:hover .post-read::after { transform: translateX(4px); }
-  .post-read-time {
-    font-size: 0.7rem; color: #555;
-    margin-left: auto;
-  }
+  .info-label { font-size: 0.75rem; color: var(--muted); line-height: 1.4; }
 
-  /* FOOTER */
-  .empty-blog {
-    grid-column: 1 / -1;
-    text-align: center; padding: 5rem 2rem;
+  /* NUMBERED LIST */
+  .step-list { list-style: none; margin: 1.5rem 0; }
+  .step-list li {
+    display: flex; gap: 1.2rem; align-items: flex-start;
+    margin-bottom: 1.2rem; padding-bottom: 1.2rem;
+    border-bottom: 1px solid rgba(201,168,76,0.08);
   }
-  .empty-blog .empty-icon { font-size: 3rem; margin-bottom: 1rem; opacity: 0.4; }
-  .empty-blog h3 { font-family: 'Playfair Display', serif; font-size: 1.5rem; color: var(--text); margin-bottom: 0.5rem; }
-  .empty-blog p { font-size: 0.9rem; color: var(--muted); }
+  .step-list li:last-child { border-bottom: none; }
+  .step-num {
+    flex-shrink: 0;
+    width: 32px; height: 32px; border-radius: 50%;
+    border: 1px solid var(--gold); color: var(--gold);
+    font-size: 0.8rem; font-weight: 600; font-family: 'Playfair Display', serif;
+    display: flex; align-items: center; justify-content: center;
+    margin-top: 2px;
+  }
+  .step-text { font-size: 0.98rem; line-height: 1.8; color: #C0BDB5; }
+  .step-text strong { color: var(--gold); }
+
+  /* TABLE */
+  .rate-table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; font-size: 0.88rem; }
+  .rate-table th {
+    background: var(--surface2); padding: 0.8rem 1rem; text-align: left;
+    font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--gold); border-bottom: 1px solid var(--border);
+  }
+  .rate-table td { padding: 0.8rem 1rem; border-bottom: 1px solid rgba(201,168,76,0.07); color: #B8B4AC; }
+  .rate-table tr:last-child td { border-bottom: none; }
+  .rate-table tr:hover td { background: rgba(201,168,76,0.03); }
+
+  /* AUTHOR BIO */
+  .author-bio {
+    margin-top: 4rem; padding: 2rem;
+    background: var(--surface);
+    border: 1px solid var(--border); border-radius: 4px;
+    display: flex; gap: 1.5rem; align-items: flex-start;
+  }
+  .bio-avatar {
+    width: 72px; height: 72px; border-radius: 50%;
+    border: 2px solid var(--gold); object-fit: cover;
+    flex-shrink: 0; object-position: top;
+  }
+  .bio-name { font-family: 'Playfair Display', serif; font-size: 1rem; font-weight: 700; color: var(--text); margin-bottom: 0.2rem; }
+  .bio-role { font-size: 0.75rem; color: var(--gold); margin-bottom: 0.6rem; }
+  .bio-text { font-size: 0.85rem; color: var(--muted); line-height: 1.7; }
+  .bio-links { margin-top: 0.8rem; display: flex; gap: 1rem; }
+  .bio-link {
+    font-size: 0.75rem; text-decoration: none; color: var(--gold);
+    border: 1px solid var(--border); padding: 0.3rem 0.8rem; border-radius: 2px;
+    transition: background 0.2s;
+  }
+  .bio-link:hover { background: rgba(201,168,76,0.08); }
+
+  /* BACK TO BLOG */
+  .back-btn {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    color: var(--muted); font-size: 0.82rem; text-decoration: none;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    transition: color 0.2s; margin-bottom: 2.5rem;
+  }
+  .back-btn:hover { color: var(--gold); }
+
+  /* PROGRESS BAR */
+  .progress-bar {
+    position: fixed; top: 0; left: 0; height: 2px;
+    background: var(--gold); z-index: 200; transition: width 0.1s;
+    width: 0%;
+  }
 
   /* FOOTER */
   footer {
@@ -199,216 +243,518 @@
   footer p { font-size: 0.78rem; color: var(--muted); }
   footer a { color: var(--gold); text-decoration: none; font-size: 0.78rem; margin-left: 1.5rem; }
 
-  /* MOBILE */
   @media (max-width: 768px) {
-    .blog-main { grid-template-columns: 1fr; }
-    .post-card.featured { grid-column: span 1; }
-    .form-row { grid-template-columns: 1fr; }
+    .info-grid { grid-template-columns: 1fr; }
+    .author-bio { flex-direction: column; }
     nav { padding: 1rem 4%; }
-    .nav-links { display: none; }
+    .article-body { padding: 2rem 1.2rem 4rem; }
+    .hero-inner { padding: 2rem 1.2rem 0; }
+    .hero-banner { padding: 0 1.2rem; }
   }
-
-  /* ANIMATIONS */
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-  .fade-in { animation: fadeUp 0.6s ease forwards; }
 </style>
 </head>
 <body>
 
+<div class="progress-bar" id="progress"></div>
+
 <!-- NAV -->
 <nav>
   <a href="index.html" class="nav-logo">FA</a>
-  <ul class="nav-links">
-    <li><a href="index.html#about">About</a></li>
-    <li><a href="index.html#experience">Experience</a></li>
-    <li><a href="index.html#skills">Skills</a></li>
-    <li><a href="index.html#contact">Contact</a></li>
-    <li><a href="fahim_ahmed_blog.html" class="active">Blog</a></li>
-    <li><a href="resources.html" style="color:var(--gold-light);font-weight:500;">Resources ✦</a></li>
-  </ul>
-  <a href="https://www.linkedin.com/in/fahim-ahmedz/" target="_blank" class="nav-cta">Connect →</a>
+  <a href="fahim_ahmed_blog.html" class="nav-back">← Back to Blog</a>
 </nav>
 
 <!-- HERO -->
-<div class="blog-hero">
-  <div class="blog-hero-inner">
-    <span class="hero-label">Insights & Articles</span>
-    <h1>Fahim's<br><span>Blog</span></h1>
-    <p>Practical insights on Accounting, VAT, Taxation, Finance, and navigating the Bangladesh & UK regulatory landscape.</p>
+<div class="article-hero">
+  <div class="hero-inner">
+    <span class="article-cat">VAT & Tax</span>
+    <h1 class="article-title">Understanding UK VAT Returns:<br><span>A Practical Guide for Small Businesses</span></h1>
+    <p class="article-subtitle">Filing your VAT return doesn't have to be daunting. This guide walks you through everything — from registration thresholds to the nine boxes of the VAT 100 form — in plain language.</p>
+    <div class="article-meta">
+      <div class="author-wrap">
+        <img src="Fahim_Ahmed.jpeg" alt="Fahim Ahmed" class="author-avatar"
+             onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+        <div class="author-avatar-fallback" style="display:none;">FA</div>
+        <div>
+          <p class="author-name">Fahim Ahmed</p>
+          <p class="author-role">Team Leader – Accounts & Finance, Staff Asia</p>
+        </div>
+      </div>
+      <div class="meta-sep"></div>
+      <div class="meta-item">📅 <strong>June 2026</strong></div>
+      <div class="meta-sep"></div>
+      <div class="meta-item">⏱ <strong>8 min read</strong></div>
+      <div class="meta-sep"></div>
+      <div class="meta-item">🇬🇧 <strong>UK Tax & VAT</strong></div>
+    </div>
+  </div>
+
+  <!-- Hero Banner Illustration -->
+  <div class="hero-banner">
+    <svg viewBox="0 0 860 260" xmlns="http://www.w3.org/2000/svg" style="background:#111;">
+      <!-- background grid -->
+      <defs>
+        <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+          <path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(201,168,76,0.06)" stroke-width="1"/>
+        </pattern>
+        <linearGradient id="fadeL" x1="0" x2="1" y1="0" y2="0">
+          <stop offset="0%" stop-color="#111" stop-opacity="1"/>
+          <stop offset="100%" stop-color="#111" stop-opacity="0"/>
+        </linearGradient>
+        <linearGradient id="fadeR" x1="0" x2="1" y1="0" y2="0">
+          <stop offset="0%" stop-color="#111" stop-opacity="0"/>
+          <stop offset="100%" stop-color="#111" stop-opacity="1"/>
+        </linearGradient>
+      </defs>
+      <rect width="860" height="260" fill="#111"/>
+      <rect width="860" height="260" fill="url(#grid)"/>
+      <rect width="860" height="260" fill="url(#fadeL)"/>
+      <rect width="860" height="260" fill="url(#fadeR)"/>
+
+      <!-- Central glow -->
+      <ellipse cx="430" cy="130" rx="300" ry="100" fill="rgba(201,168,76,0.05)"/>
+
+      <!-- UK flag simplified -->
+      <g transform="translate(50, 60)">
+        <rect width="120" height="80" rx="4" fill="#00247D"/>
+        <line x1="0" y1="0" x2="120" y2="80" stroke="white" stroke-width="12"/>
+        <line x1="120" y1="0" x2="0" y2="80" stroke="white" stroke-width="12"/>
+        <line x1="0" y1="0" x2="120" y2="80" stroke="#CF142B" stroke-width="6"/>
+        <line x1="120" y1="0" x2="0" y2="80" stroke="#CF142B" stroke-width="6"/>
+        <rect x="50" y="0" width="20" height="80" fill="white"/>
+        <rect x="0" y="30" width="120" height="20" fill="white"/>
+        <rect x="54" y="0" width="12" height="80" fill="#CF142B"/>
+        <rect x="0" y="34" width="120" height="12" fill="#CF142B"/>
+      </g>
+
+      <!-- Document / VAT form -->
+      <g transform="translate(230, 40)">
+        <rect width="160" height="200" rx="4" fill="#1a1a1a" stroke="rgba(201,168,76,0.3)" stroke-width="1"/>
+        <rect x="12" y="14" width="136" height="14" rx="2" fill="rgba(201,168,76,0.15)"/>
+        <text x="80" y="25" fill="#C9A84C" font-size="9" text-anchor="middle" font-family="DM Sans,sans-serif" font-weight="600">VAT 100 RETURN</text>
+        <!-- form lines -->
+        <g fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1">
+          <line x1="12" y1="45" x2="148" y2="45"/>
+          <line x1="12" y1="63" x2="148" y2="63"/>
+          <line x1="12" y1="81" x2="148" y2="81"/>
+          <line x1="12" y1="99" x2="148" y2="99"/>
+          <line x1="12" y1="117" x2="148" y2="117"/>
+          <line x1="12" y1="135" x2="148" y2="135"/>
+          <line x1="12" y1="153" x2="148" y2="153"/>
+          <line x1="12" y1="171" x2="148" y2="171"/>
+        </g>
+        <!-- box labels -->
+        <g fill="#888" font-size="7" font-family="DM Sans,sans-serif">
+          <text x="16" y="58">Box 1 — Output VAT</text>
+          <text x="16" y="76">Box 2 — EC Acquisitions</text>
+          <text x="16" y="94">Box 3 — Total Output</text>
+          <text x="16" y="112">Box 4 — Input VAT</text>
+          <text x="16" y="130">Box 5 — Net VAT Due</text>
+          <text x="16" y="148">Box 6 — Total Sales</text>
+          <text x="16" y="166">Box 7 — Total Purchases</text>
+          <text x="16" y="184">Box 8 — EC Supplies</text>
+        </g>
+        <!-- gold box highlight on Box 5 -->
+        <rect x="10" y="120" width="140" height="18" rx="2" fill="rgba(201,168,76,0.12)" stroke="rgba(201,168,76,0.4)" stroke-width="1"/>
+        <text x="90" y="131" fill="#C9A84C" font-size="7" text-anchor="middle" font-family="DM Sans,sans-serif" font-weight="600">Box 5 — Net VAT Due ✓</text>
+      </g>
+
+      <!-- Calculator -->
+      <g transform="translate(440, 70)">
+        <rect width="90" height="120" rx="6" fill="#1a1a1a" stroke="rgba(201,168,76,0.25)" stroke-width="1"/>
+        <rect x="8" y="10" width="74" height="28" rx="3" fill="#0f2a0f"/>
+        <text x="78" y="28" fill="#4ade80" font-size="11" text-anchor="end" font-family="monospace">£2,450</text>
+        <!-- buttons -->
+        <g fill="rgba(201,168,76,0.2)" stroke="rgba(201,168,76,0.15)" stroke-width="0.5">
+          <rect x="10" y="46" width="16" height="14" rx="2"/><rect x="30" y="46" width="16" height="14" rx="2"/>
+          <rect x="50" y="46" width="16" height="14" rx="2"/><rect x="70" y="46" width="12" height="14" rx="2"/>
+          <rect x="10" y="64" width="16" height="14" rx="2"/><rect x="30" y="64" width="16" height="14" rx="2"/>
+          <rect x="50" y="64" width="16" height="14" rx="2"/><rect x="70" y="64" width="12" height="14" rx="2"/>
+          <rect x="10" y="82" width="16" height="14" rx="2"/><rect x="30" y="82" width="16" height="14" rx="2"/>
+          <rect x="50" y="82" width="32" height="14" rx="2"/>
+          <rect x="10" y="100" width="50" height="14" rx="2" fill="rgba(201,168,76,0.35)"/>
+          <rect x="64" y="100" width="18" height="14" rx="2"/>
+        </g>
+      </g>
+
+      <!-- HMRC logo text -->
+      <g transform="translate(580, 90)">
+        <rect width="140" height="60" rx="4" fill="#1a1a1a" stroke="rgba(201,168,76,0.2)" stroke-width="1"/>
+        <text x="70" y="28" fill="#C9A84C" font-size="16" text-anchor="middle" font-family="Playfair Display,serif" font-weight="700">HMRC</text>
+        <text x="70" y="44" fill="#666" font-size="7.5" text-anchor="middle" font-family="DM Sans,sans-serif" letter-spacing="1">HM REVENUE & CUSTOMS</text>
+      </g>
+
+      <!-- MTD badge -->
+      <g transform="translate(588, 168)">
+        <rect width="124" height="28" rx="14" fill="rgba(201,168,76,0.12)" stroke="rgba(201,168,76,0.3)" stroke-width="1"/>
+        <text x="62" y="18" fill="#C9A84C" font-size="8.5" text-anchor="middle" font-family="DM Sans,sans-serif" font-weight="500">Making Tax Digital ✓</text>
+      </g>
+
+      <!-- Title text overlay -->
+      <text x="430" y="228" fill="rgba(201,168,76,0.12)" font-size="48" text-anchor="middle" font-family="Playfair Display,serif" font-weight="900">VAT GUIDE</text>
+    </svg>
   </div>
 </div>
 
-<!-- FILTERS -->
-<div class="blog-filters">
-  <button class="filter-btn active" onclick="filterPosts('all', this)">All Posts</button>
-  <button class="filter-btn" onclick="filterPosts('vat', this)">VAT & Tax</button>
-  <button class="filter-btn" onclick="filterPosts('accounting', this)">Accounting</button>
-  <button class="filter-btn" onclick="filterPosts('finance', this)">Finance</button>
-  <button class="filter-btn" onclick="filterPosts('career', this)">Career</button>
-</div>
+<!-- ARTICLE BODY -->
+<div class="article-body">
+  <a href="fahim_ahmed_blog.html" class="back-btn">← Back to Blog</a>
 
-<!-- POSTS GRID -->
-<div class="blog-main" id="postsGrid">
-  <!-- Posts rendered by JS -->
+  <!-- INTRO -->
+  <p>If you run a small business in the UK, VAT returns are one of those recurring responsibilities that never quite leave your mind. I've filed over <strong>100 UK VAT and Corporation Tax returns</strong> for businesses of various sizes, and the one thing I've noticed is this: most mistakes don't come from dishonesty — they come from confusion.</p>
+  <p>This guide is written from practical experience. Whether you've just crossed the registration threshold or you've been filing for years and want a cleaner process, I'll walk you through everything you need to know — clearly and without jargon.</p>
+
+  <!-- KEY NUMBERS -->
+  <div class="info-box">
+    <p class="info-box-title">2025–26 Key Numbers at a Glance</p>
+    <div class="info-grid">
+      <div class="info-item">
+        <span class="info-num">£90,000</span>
+        <span class="info-label">VAT Registration Threshold (taxable turnover in any rolling 12 months)</span>
+      </div>
+      <div class="info-item">
+        <span class="info-num">20%</span>
+        <span class="info-label">Standard VAT Rate on most goods & services</span>
+      </div>
+      <div class="info-item">
+        <span class="info-num">£200</span>
+        <span class="info-label">Penalty per late return after threshold of points is reached</span>
+      </div>
+    </div>
+  </div>
+
+  <h2>What Is VAT and Why Does It Matter?</h2>
+  <p>VAT — Value Added Tax — is a consumption tax charged on most goods and services supplied in the UK. As a VAT-registered business, you act as a <strong>tax collector for HMRC</strong>. You charge VAT on your sales (called <strong>output tax</strong>), pay VAT on your purchases (called <strong>input tax</strong>), and the difference is what you either pay to HMRC or reclaim from them.</p>
+
+  <div class="callout">
+    <p><strong>Simple formula:</strong> Output VAT (what you collected from customers) minus Input VAT (what you paid on business purchases) = Amount payable to HMRC (or refundable to you).</p>
+  </div>
+
+  <p>Ultimately the end consumer bears the cost of VAT, while your business is simply the middleman. But that middleman role comes with real administrative and compliance responsibilities.</p>
+
+  <!-- ILLUSTRATION 1 — VAT Flow -->
+  <div class="article-visual">
+    <svg viewBox="0 0 800 200" xmlns="http://www.w3.org/2000/svg" style="background:#111;">
+      <rect width="800" height="200" fill="#111"/>
+      <!-- boxes -->
+      <rect x="30" y="60" width="160" height="80" rx="4" fill="#1a1a1a" stroke="rgba(201,168,76,0.3)" stroke-width="1"/>
+      <text x="110" y="94" fill="#C9A84C" font-size="11" text-anchor="middle" font-family="Playfair Display,serif" font-weight="700">YOUR BUSINESS</text>
+      <text x="110" y="112" fill="#888" font-size="9" text-anchor="middle" font-family="DM Sans,sans-serif">VAT-Registered</text>
+
+      <!-- arrow right 1 -->
+      <line x1="190" y1="100" x2="270" y2="100" stroke="rgba(201,168,76,0.5)" stroke-width="1.5" stroke-dasharray="5,3"/>
+      <polygon points="270,95 282,100 270,105" fill="#C9A84C"/>
+      <text x="236" y="92" fill="#888" font-size="8" text-anchor="middle" font-family="DM Sans,sans-serif">Output VAT</text>
+      <text x="236" y="116" fill="#C9A84C" font-size="9" text-anchor="middle" font-family="DM Sans,sans-serif" font-weight="500">charged to</text>
+
+      <rect x="282" y="60" width="160" height="80" rx="4" fill="#1a1a1a" stroke="rgba(201,168,76,0.3)" stroke-width="1"/>
+      <text x="362" y="94" fill="#E8E4DC" font-size="11" text-anchor="middle" font-family="Playfair Display,serif" font-weight="700">CUSTOMERS</text>
+      <text x="362" y="112" fill="#888" font-size="9" text-anchor="middle" font-family="DM Sans,sans-serif">Bear the cost</text>
+
+      <!-- arrow right 2 (to HMRC) -->
+      <line x1="110" y1="140" x2="110" y2="168" stroke="rgba(201,168,76,0.4)" stroke-width="1.5"/>
+      <polygon points="105,168 110,180 115,168" fill="#C9A84C"/>
+
+      <!-- supplier box -->
+      <rect x="450" y="60" width="150" height="80" rx="4" fill="#1a1a1a" stroke="rgba(201,168,76,0.2)" stroke-width="1"/>
+      <text x="525" y="94" fill="#E8E4DC" font-size="11" text-anchor="middle" font-family="Playfair Display,serif" font-weight="700">SUPPLIERS</text>
+      <text x="525" y="112" fill="#888" font-size="9" text-anchor="middle" font-family="DM Sans,sans-serif">Charge you VAT</text>
+
+      <!-- arrow left from supplier -->
+      <line x1="450" y1="100" x2="370" y2="100" stroke="rgba(100,180,100,0.4)" stroke-width="1.5" stroke-dasharray="5,3"/>
+      <polygon points="370,95 358,100 370,105" fill="#4ade80"/>
+      <text x="410" y="92" fill="#888" font-size="8" text-anchor="middle" font-family="DM Sans,sans-serif">Input VAT</text>
+      <text x="410" y="116" fill="#4ade80" font-size="9" text-anchor="middle" font-family="DM Sans,sans-serif" font-weight="500">you reclaim</text>
+
+      <!-- HMRC box -->
+      <rect x="610" y="50" width="160" height="100" rx="4" fill="rgba(201,168,76,0.08)" stroke="rgba(201,168,76,0.4)" stroke-width="1"/>
+      <text x="690" y="90" fill="#C9A84C" font-size="13" text-anchor="middle" font-family="Playfair Display,serif" font-weight="700">HMRC</text>
+      <text x="690" y="108" fill="#888" font-size="8.5" text-anchor="middle" font-family="DM Sans,sans-serif">Receives the</text>
+      <text x="690" y="120" fill="#C9A84C" font-size="8.5" text-anchor="middle" font-family="DM Sans,sans-serif" font-weight="500">Net Difference</text>
+
+      <!-- arrow to HMRC -->
+      <line x1="525" y1="140" x2="690" y2="152" stroke="rgba(201,168,76,0.4)" stroke-width="1.5"/>
+      <polygon points="685,148 698,153 686,158" fill="#C9A84C"/>
+      <text x="615" y="160" fill="#888" font-size="8" font-family="DM Sans,sans-serif">quarterly returns</text>
+    </svg>
+    <p class="visual-caption">How VAT flows between your business, customers, suppliers, and HMRC</p>
+  </div>
+
+  <h2>When Do You Need to Register for VAT?</h2>
+  <p>You <strong>must register</strong> if your taxable turnover exceeds <strong>£90,000</strong> in any rolling 12-month period (the threshold as of November 2025), or if you expect it to exceed that in the next 30 days alone. You can also <strong>voluntarily register</strong> even below the threshold — which lets you reclaim VAT on your business purchases. This is often worth doing for product-based businesses with significant input costs.</p>
+
+  <div class="callout">
+    <p><strong>Pro tip from the field:</strong> Voluntary registration makes sense when your customers are primarily VAT-registered businesses (who can reclaim it anyway) and your own input VAT is substantial. Always model both scenarios before deciding.</p>
+  </div>
+
+  <h2>The Three UK VAT Rates</h2>
+  <table class="rate-table">
+    <thead>
+      <tr>
+        <th>Rate</th>
+        <th>Percentage</th>
+        <th>Examples</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong style="color:var(--gold)">Standard Rate</strong></td>
+        <td>20%</td>
+        <td>Most goods and services, electronics, clothing (adult)</td>
+      </tr>
+      <tr>
+        <td><strong style="color:var(--gold)">Reduced Rate</strong></td>
+        <td>5%</td>
+        <td>Home energy, children's car seats, some mobility aids</td>
+      </tr>
+      <tr>
+        <td><strong style="color:var(--gold)">Zero Rate</strong></td>
+        <td>0%</td>
+        <td>Most food, children's clothing, books, newspapers</td>
+      </tr>
+      <tr>
+        <td><em>Exempt</em></td>
+        <td>N/A</td>
+        <td>Insurance, financial services, postage stamps, health services</td>
+      </tr>
+    </tbody>
+  </table>
+  <p>Note: Zero-rated and exempt are not the same. Zero-rated supplies are still <em>taxable</em> — you can reclaim input VAT on related costs. Exempt supplies are outside the VAT system entirely — you cannot reclaim input VAT on costs related to them.</p>
+
+  <h2>The VAT 100 Form: All Nine Boxes Explained</h2>
+  <p>The heart of a VAT return is the <strong>VAT 100 form</strong>. There are nine boxes to complete. Getting these right is everything — it determines whether you owe HMRC or they owe you.</p>
+
+  <!-- ILLUSTRATION 2 — 9 boxes -->
+  <div class="article-visual">
+    <svg viewBox="0 0 800 320" xmlns="http://www.w3.org/2000/svg" style="background:#0f0f0f;">
+      <rect width="800" height="320" fill="#0f0f0f"/>
+      <text x="400" y="28" fill="rgba(201,168,76,0.6)" font-size="11" text-anchor="middle" font-family="DM Sans,sans-serif" letter-spacing="2" font-weight="500">VAT 100 — THE NINE BOXES</text>
+
+      <!-- Box grid 3x3 -->
+      <!-- Row 1 -->
+      <g>
+        <rect x="20" y="40" width="234" height="76" rx="3" fill="#161616" stroke="rgba(201,168,76,0.2)" stroke-width="1"/>
+        <text x="30" y="62" fill="#C9A84C" font-size="18" font-family="Playfair Display,serif" font-weight="700">1</text>
+        <text x="55" y="63" fill="#E8E4DC" font-size="10" font-weight="500" font-family="DM Sans,sans-serif">VAT due on sales</text>
+        <text x="30" y="82" fill="#888" font-size="8.5" font-family="DM Sans,sans-serif" dominant-baseline="hanging">Total output VAT collected</text>
+        <text x="30" y="96" fill="#888" font-size="8.5" font-family="DM Sans,sans-serif">from all sales in the period.</text>
+      </g>
+      <g>
+        <rect x="264" y="40" width="234" height="76" rx="3" fill="#161616" stroke="rgba(201,168,76,0.2)" stroke-width="1"/>
+        <text x="274" y="62" fill="#C9A84C" font-size="18" font-family="Playfair Display,serif" font-weight="700">2</text>
+        <text x="299" y="63" fill="#E8E4DC" font-size="10" font-weight="500" font-family="DM Sans,sans-serif">VAT on EC acquisitions</text>
+        <text x="274" y="82" fill="#888" font-size="8.5" font-family="DM Sans,sans-serif" dominant-baseline="hanging">VAT on goods from EU</text>
+        <text x="274" y="96" fill="#888" font-size="8.5" font-family="DM Sans,sans-serif">(usually £0 for most SMEs).</text>
+      </g>
+      <g>
+        <rect x="508" y="40" width="272" height="76" rx="3" fill="rgba(201,168,76,0.06)" stroke="rgba(201,168,76,0.35)" stroke-width="1"/>
+        <text x="518" y="62" fill="#C9A84C" font-size="18" font-family="Playfair Display,serif" font-weight="700">3</text>
+        <text x="543" y="63" fill="#E8E4DC" font-size="10" font-weight="500" font-family="DM Sans,sans-serif">Total output VAT (Box 1+2)</text>
+        <text x="518" y="82" fill="#888" font-size="8.5" font-family="DM Sans,sans-serif" dominant-baseline="hanging">Sum of Boxes 1 and 2.</text>
+        <text x="518" y="96" fill="#C9A84C" font-size="8" font-family="DM Sans,sans-serif">← Calculated automatically</text>
+      </g>
+
+      <!-- Row 2 -->
+      <g>
+        <rect x="20" y="128" width="234" height="76" rx="3" fill="#161616" stroke="rgba(201,168,76,0.2)" stroke-width="1"/>
+        <text x="30" y="150" fill="#C9A84C" font-size="18" font-family="Playfair Display,serif" font-weight="700">4</text>
+        <text x="55" y="151" fill="#E8E4DC" font-size="10" font-weight="500" font-family="DM Sans,sans-serif">VAT reclaimed (input tax)</text>
+        <text x="30" y="170" fill="#888" font-size="8.5" font-family="DM Sans,sans-serif" dominant-baseline="hanging">All VAT paid on business</text>
+        <text x="30" y="184" fill="#888" font-size="8.5" font-family="DM Sans,sans-serif">purchases you can reclaim.</text>
+      </g>
+      <g>
+        <rect x="264" y="128" width="516" height="76" rx="3" fill="rgba(201,168,76,0.1)" stroke="rgba(201,168,76,0.5)" stroke-width="1.5"/>
+        <text x="274" y="150" fill="#C9A84C" font-size="18" font-family="Playfair Display,serif" font-weight="700">5</text>
+        <text x="299" y="151" fill="#E8E4DC" font-size="11" font-weight="600" font-family="DM Sans,sans-serif">Net VAT payable / reclaimable ★</text>
+        <text x="274" y="170" fill="#aaa" font-size="8.5" font-family="DM Sans,sans-serif" dominant-baseline="hanging">Box 3 minus Box 4. This is the key figure.</text>
+        <text x="274" y="184" fill="#C9A84C" font-size="8.5" font-family="DM Sans,sans-serif">Positive = pay HMRC. Negative = HMRC refunds you.</text>
+      </g>
+
+      <!-- Row 3 -->
+      <g>
+        <rect x="20" y="216" width="234" height="76" rx="3" fill="#161616" stroke="rgba(201,168,76,0.2)" stroke-width="1"/>
+        <text x="30" y="238" fill="#C9A84C" font-size="18" font-family="Playfair Display,serif" font-weight="700">6</text>
+        <text x="55" y="239" fill="#E8E4DC" font-size="10" font-weight="500" font-family="DM Sans,sans-serif">Total value of sales</text>
+        <text x="30" y="258" fill="#888" font-size="8.5" font-family="DM Sans,sans-serif" dominant-baseline="hanging">Net (ex-VAT) value of all</text>
+        <text x="30" y="272" fill="#888" font-size="8.5" font-family="DM Sans,sans-serif">your outputs. No pence.</text>
+      </g>
+      <g>
+        <rect x="264" y="216" width="234" height="76" rx="3" fill="#161616" stroke="rgba(201,168,76,0.2)" stroke-width="1"/>
+        <text x="274" y="238" fill="#C9A84C" font-size="18" font-family="Playfair Display,serif" font-weight="700">7</text>
+        <text x="299" y="239" fill="#E8E4DC" font-size="10" font-weight="500" font-family="DM Sans,sans-serif">Total value of purchases</text>
+        <text x="274" y="258" fill="#888" font-size="8.5" font-family="DM Sans,sans-serif" dominant-baseline="hanging">Net (ex-VAT) value of all</text>
+        <text x="274" y="272" fill="#888" font-size="8.5" font-family="DM Sans,sans-serif">your inputs. No pence.</text>
+      </g>
+      <g>
+        <rect x="508" y="216" width="130" height="76" rx="3" fill="#161616" stroke="rgba(201,168,76,0.15)" stroke-width="1"/>
+        <text x="518" y="238" fill="#C9A84C" font-size="18" font-family="Playfair Display,serif" font-weight="700">8</text>
+        <text x="543" y="239" fill="#888" font-size="9" font-weight="500" font-family="DM Sans,sans-serif">EC Supplies</text>
+        <text x="518" y="262" fill="#666" font-size="8" font-family="DM Sans,sans-serif">Goods to EC</text>
+        <text x="518" y="274" fill="#666" font-size="8" font-family="DM Sans,sans-serif">countries (net).</text>
+      </g>
+      <g>
+        <rect x="648" y="216" width="132" height="76" rx="3" fill="#161616" stroke="rgba(201,168,76,0.15)" stroke-width="1"/>
+        <text x="658" y="238" fill="#C9A84C" font-size="18" font-family="Playfair Display,serif" font-weight="700">9</text>
+        <text x="683" y="239" fill="#888" font-size="9" font-weight="500" font-family="DM Sans,sans-serif">EC Acquisitions</text>
+        <text x="658" y="262" fill="#666" font-size="8" font-family="DM Sans,sans-serif">Goods from EC</text>
+        <text x="658" y="274" fill="#666" font-size="8" font-family="DM Sans,sans-serif">countries (net).</text>
+      </g>
+
+      <!-- focus arrow to box 5 -->
+      <text x="400" y="308" fill="rgba(201,168,76,0.4)" font-size="8.5" text-anchor="middle" font-family="DM Sans,sans-serif">★ Box 5 is the critical figure — always cross-check this against your accounting records</text>
+    </svg>
+    <p class="visual-caption">The nine boxes of the UK VAT 100 return — Box 5 is the most important</p>
+  </div>
+
+  <h2>How to Submit: Making Tax Digital (MTD)</h2>
+  <p>Since April 2022, virtually all VAT-registered businesses must submit returns digitally using <strong>Making Tax Digital (MTD)-compatible software</strong>. You cannot simply log into the HMRC portal and type numbers in manually anymore.</p>
+  <p>The most widely used MTD-compatible platforms are <strong>Xero</strong>, <strong>QuickBooks</strong>, and <strong>Sage</strong>. In my day-to-day practice, I primarily use Xero and QuickBooks — both handle multi-currency transactions, automatically populate the VAT boxes from your transaction data, and submit directly to HMRC in one click.</p>
+
+  <div class="callout">
+    <p><strong>MTD in practice:</strong> Once your accounting software is connected to HMRC via your Government Gateway credentials, submitting is largely automated. The key is ensuring your transactions are properly categorised throughout the quarter — not just at submission time.</p>
+  </div>
+
+  <h2>VAT Schemes: Which One Suits Your Business?</h2>
+  <p>HMRC offers several VAT schemes designed to simplify reporting or smooth cash flow. The right choice depends on your turnover, customer mix, and cash flow needs.</p>
+
+  <ul class="step-list">
+    <li>
+      <span class="step-num">1</span>
+      <span class="step-text"><strong>Standard VAT Accounting</strong> — File quarterly, pay the difference between output and input VAT. Works well for most businesses. You account for VAT when invoices are issued, not when payment is received.</span>
+    </li>
+    <li>
+      <span class="step-num">2</span>
+      <span class="step-text"><strong>Cash Accounting Scheme</strong> — You only account for VAT when you actually receive payment from customers (and when you pay your suppliers). Great for businesses with slow-paying customers, as it protects cash flow. Available if your estimated taxable turnover is under £1.35 million.</span>
+    </li>
+    <li>
+      <span class="step-num">3</span>
+      <span class="step-text"><strong>Flat Rate Scheme (FRS)</strong> — Instead of calculating exact output and input VAT, you pay a fixed percentage of your gross (VAT-inclusive) turnover. The rate varies by sector (e.g. 14.5% for accountants, 12% for consultants). Can be simpler and sometimes cheaper — but you can't reclaim input VAT on purchases (except capital assets over £2,000).</span>
+    </li>
+    <li>
+      <span class="step-num">4</span>
+      <span class="step-text"><strong>Annual Accounting Scheme</strong> — File just one VAT return per year, with interim payments made throughout. Reduces administrative burden but requires careful cash flow planning as you make advance payments based on estimated liability.</span>
+    </li>
+  </ul>
+
+  <!-- ILLUSTRATION 3 — Penalties timeline -->
+  <div class="article-visual">
+    <svg viewBox="0 0 800 160" xmlns="http://www.w3.org/2000/svg" style="background:#0f0f0f;">
+      <rect width="800" height="160" fill="#0f0f0f"/>
+      <text x="400" y="24" fill="rgba(201,168,76,0.7)" font-size="10" text-anchor="middle" font-family="DM Sans,sans-serif" letter-spacing="2">HMRC LATE FILING PENALTY SYSTEM</text>
+      <!-- timeline line -->
+      <line x1="60" y1="80" x2="740" y2="80" stroke="rgba(201,168,76,0.2)" stroke-width="1.5"/>
+
+      <!-- Points -->
+      <g>
+        <circle cx="120" cy="80" r="16" fill="rgba(201,168,76,0.15)" stroke="rgba(201,168,76,0.5)" stroke-width="1"/>
+        <text x="120" y="85" fill="#C9A84C" font-size="11" text-anchor="middle" font-family="Playfair Display,serif" font-weight="700">1pt</text>
+        <text x="120" y="110" fill="#666" font-size="8" text-anchor="middle" font-family="DM Sans,sans-serif">1st late</text>
+        <text x="120" y="120" fill="#666" font-size="8" text-anchor="middle" font-family="DM Sans,sans-serif">return</text>
+      </g>
+      <g>
+        <circle cx="270" cy="80" r="16" fill="rgba(201,168,76,0.15)" stroke="rgba(201,168,76,0.5)" stroke-width="1"/>
+        <text x="270" y="85" fill="#C9A84C" font-size="11" text-anchor="middle" font-family="Playfair Display,serif" font-weight="700">2pt</text>
+        <text x="270" y="110" fill="#666" font-size="8" text-anchor="middle" font-family="DM Sans,sans-serif">2nd late</text>
+        <text x="270" y="120" fill="#666" font-size="8" text-anchor="middle" font-family="DM Sans,sans-serif">return</text>
+      </g>
+      <g>
+        <circle cx="420" cy="80" r="16" fill="rgba(201,168,76,0.15)" stroke="rgba(201,168,76,0.5)" stroke-width="1"/>
+        <text x="420" y="85" fill="#C9A84C" font-size="11" text-anchor="middle" font-family="Playfair Display,serif" font-weight="700">3pt</text>
+        <text x="420" y="110" fill="#666" font-size="8" text-anchor="middle" font-family="DM Sans,sans-serif">3rd late</text>
+        <text x="420" y="120" fill="#666" font-size="8" text-anchor="middle" font-family="DM Sans,sans-serif">return</text>
+      </g>
+      <g>
+        <circle cx="580" cy="80" r="22" fill="rgba(220,50,50,0.15)" stroke="rgba(220,50,50,0.6)" stroke-width="1.5"/>
+        <text x="580" y="78" fill="#f87171" font-size="8.5" text-anchor="middle" font-family="DM Sans,sans-serif" font-weight="600">4pt</text>
+        <text x="580" y="89" fill="#f87171" font-size="7.5" text-anchor="middle" font-family="DM Sans,sans-serif">THRESHOLD</text>
+        <text x="580" y="114" fill="#f87171" font-size="8" text-anchor="middle" font-family="DM Sans,sans-serif">£200 penalty</text>
+        <text x="580" y="125" fill="#f87171" font-size="8" text-anchor="middle" font-family="DM Sans,sans-serif">triggered!</text>
+      </g>
+      <g>
+        <circle cx="720" cy="80" r="22" fill="rgba(220,50,50,0.2)" stroke="rgba(220,50,50,0.7)" stroke-width="1.5"/>
+        <text x="720" y="78" fill="#f87171" font-size="8.5" text-anchor="middle" font-family="DM Sans,sans-serif" font-weight="600">5pt+</text>
+        <text x="720" y="89" fill="#f87171" font-size="7.5" text-anchor="middle" font-family="DM Sans,sans-serif">EACH TIME</text>
+        <text x="720" y="114" fill="#f87171" font-size="8" text-anchor="middle" font-family="DM Sans,sans-serif">+£200 every</text>
+        <text x="720" y="125" fill="#f87171" font-size="8" text-anchor="middle" font-family="DM Sans,sans-serif">late submission</text>
+      </g>
+      <!-- quarterly label -->
+      <text x="400" y="50" fill="#555" font-size="7.5" text-anchor="middle" font-family="DM Sans,sans-serif">Threshold = 4 points for quarterly filers · Reset by filing all returns on time for 12 months</text>
+    </svg>
+    <p class="visual-caption">HMRC's points-based late filing penalty system — quarterly filers hit the £200 penalty at 4 points</p>
+  </div>
+
+  <h2>Deadlines and Penalties</h2>
+  <p>Most businesses submit VAT returns <strong>quarterly</strong>. Your return and payment are due <strong>one calendar month and seven days</strong> after the end of your VAT period — for example, if your quarter ends 31 March, your deadline is 7 May.</p>
+  <p>HMRC operates a <strong>points-based penalty system</strong> for late submissions. You accumulate one point per late return. Quarterly filers hit the penalty threshold at <strong>4 points</strong>, triggering a <strong>£200 fine</strong>. Every further late submission adds another £200. Points can be reset by filing all returns on time for 12 consecutive months.</p>
+  <p>Late payment also carries separate penalties: HMRC charges interest from day one at the <strong>Bank of England base rate plus 4%</strong>, plus additional charges if payment is more than 15 days late.</p>
+
+  <div class="callout">
+    <p><strong>My advice:</strong> Set a recurring calendar reminder for one month before your VAT deadline — not the day before. This gives you time to chase missing receipts, reconcile your accounts, and review the return without pressure.</p>
+  </div>
+
+  <h2>5 Common Mistakes I See (And How to Avoid Them)</h2>
+  <ul class="step-list">
+    <li>
+      <span class="step-num">①</span>
+      <span class="step-text"><strong>Claiming VAT on personal or non-business expenses.</strong> Only VAT on genuine business expenditure is reclaimable. Mixed-use items (like a mobile phone used for both personal and work) require an honest apportionment.</span>
+    </li>
+    <li>
+      <span class="step-num">②</span>
+      <span class="step-text"><strong>Misclassifying zero-rated vs exempt supplies.</strong> This changes whether you can reclaim input VAT on related costs. A seemingly minor coding error in your accounting software can create a significant discrepancy over time.</span>
+    </li>
+    <li>
+      <span class="step-num">③</span>
+      <span class="step-text"><strong>Forgetting to include all income.</strong> This includes sales paid in cash, barter transactions, and any income that didn't come through your main bank account. HMRC has sophisticated data-matching capabilities.</span>
+    </li>
+    <li>
+      <span class="step-num">④</span>
+      <span class="step-text"><strong>Not reconciling Box 6 (total sales) against your actual sales ledger.</strong> Box 6 should match your turnover records. A mismatch raises red flags during any HMRC compliance check.</span>
+    </li>
+    <li>
+      <span class="step-num">⑤</span>
+      <span class="step-text"><strong>Missing the deadline because of bank issues.</strong> BACS/Direct Debit payments to HMRC can take 3 working days. Plan to initiate payment at least 5 days before the deadline — especially over bank holidays.</span>
+    </li>
+  </ul>
+
+  <h2>Final Thoughts</h2>
+  <p>UK VAT compliance isn't complicated once you understand the structure. The biggest risk for small businesses isn't intentional error — it's <strong>disorganisation</strong>: unmaintained records, last-minute submissions, and software that isn't properly configured for MTD.</p>
+  <p>Invest time in setting up your accounting software correctly from the start. Reconcile your VAT account monthly, not just at quarter-end. And if your business is growing toward the £90,000 threshold, start planning for registration now — not after you've crossed it.</p>
+  <p>If you have specific questions about your situation — whether that's choosing the right VAT scheme, handling multi-currency transactions, or navigating both UK and Bangladeshi tax obligations simultaneously — feel free to reach out. I'm always happy to discuss.</p>
+
+  <!-- AUTHOR BIO -->
+  <div class="author-bio">
+    <img src="Fahim_Ahmed.jpeg" alt="Fahim Ahmed" class="bio-avatar"
+         onerror="this.style.display='none'">
+    <div>
+      <p class="bio-name">Fahim Ahmed</p>
+      <p class="bio-role">Team Leader – Accounts & Finance · Staff Asia · MSC Accounting, ACCA UK</p>
+      <p class="bio-text">3+ years of hands-on experience in BD and UK accounting, VAT, and corporate tax. 100+ UK VAT and Corporation Tax filings. Expert in Xero and QuickBooks. Currently leading the Accounts & Finance team at a fast-growing EdTech startup in Sylhet, Bangladesh.</p>
+      <div class="bio-links">
+        <a href="https://www.linkedin.com/in/fahim-ahmedz/" target="_blank" class="bio-link">LinkedIn →</a>
+        <a href="mailto:fahimacco@gmail.com" class="bio-link">Email →</a>
+        <a href="fahim_ahmed_blog.html" class="bio-link">More Articles →</a>
+      </div>
+    </div>
+  </div>
 </div>
 
 <!-- FOOTER -->
 <footer>
   <p>© 2026 Fahim Ahmed. All rights reserved.</p>
   <div>
-    <a href="index.html">← Back to Main Site</a>
+    <a href="fahim_ahmed_blog.html">← Blog</a>
+    <a href="index.html">Main Site</a>
     <a href="https://www.linkedin.com/in/fahim-ahmedz/" target="_blank">LinkedIn →</a>
   </div>
 </footer>
 
 <script>
-  // Sample starter posts
-  const starterPosts = [
-    {
-      id: 1,
-      title: "Understanding UK VAT Returns: A Practical Guide for Small Businesses",
-      cat: "vat",
-      excerpt: "Filing UK VAT returns doesn't have to be daunting. Here's everything you need to know to stay compliant.",
-      content: "",
-      date: "May 2026",
-      readTime: "8 min read",
-      featured: true,
-      thumbStyle: "background:linear-gradient(135deg,#0a1a0a 0%,#0d2b0d 40%,#1a3a0a 100%);",
-      thumbContent: `<div style="position:relative;z-index:1;text-align:center;padding:1rem;">
-        <div style="display:inline-flex;align-items:center;gap:8px;background:rgba(0,36,125,0.9);border:1px solid rgba(255,255,255,0.2);padding:8px 16px;border-radius:4px;margin-bottom:12px;">
-          <div style="width:36px;height:24px;background:#00247D;position:relative;overflow:hidden;border-radius:2px;flex-shrink:0;">
-            <div style="position:absolute;top:0;left:0;width:100%;height:100%;background:linear-gradient(to bottom right,transparent 45%,#CF142B 45%,#CF142B 55%,transparent 55%),linear-gradient(to bottom left,transparent 45%,#CF142B 45%,#CF142B 55%,transparent 55%);"></div>
-            <div style="position:absolute;top:50%;left:0;transform:translateY(-50%);width:100%;height:30%;background:white;"></div>
-            <div style="position:absolute;top:50%;left:0;transform:translateY(-50%);width:100%;height:16%;background:#CF142B;"></div>
-            <div style="position:absolute;top:0;left:50%;transform:translateX(-50%);height:100%;width:30%;background:white;"></div>
-            <div style="position:absolute;top:0;left:50%;transform:translateX(-50%);height:100%;width:16%;background:#CF142B;"></div>
-          </div>
-          <span style="color:#C9A84C;font-size:11px;font-weight:700;letter-spacing:2px;font-family:sans-serif;">HMRC · UK VAT</span>
-        </div>
-        <div style="background:rgba(0,0,0,0.6);border:1px solid rgba(201,168,76,0.4);border-radius:4px;padding:10px 18px;display:inline-block;">
-          <div style="color:#C9A84C;font-size:13px;font-weight:700;font-family:Georgia,serif;margin-bottom:4px;">VAT 100</div>
-          <div style="color:#888;font-size:9px;letter-spacing:1px;font-family:sans-serif;">BOX 1–9 · QUARTERLY RETURN</div>
-        </div>
-        <div style="margin-top:10px;display:flex;gap:6px;justify-content:center;flex-wrap:wrap;">
-          <span style="background:rgba(201,168,76,0.15);border:1px solid rgba(201,168,76,0.3);color:#C9A84C;font-size:8px;padding:3px 8px;border-radius:2px;font-family:sans-serif;">20% Standard</span>
-          <span style="background:rgba(201,168,76,0.15);border:1px solid rgba(201,168,76,0.3);color:#C9A84C;font-size:8px;padding:3px 8px;border-radius:2px;font-family:sans-serif;">5% Reduced</span>
-          <span style="background:rgba(201,168,76,0.15);border:1px solid rgba(201,168,76,0.3);color:#C9A84C;font-size:8px;padding:3px 8px;border-radius:2px;font-family:sans-serif;">0% Zero</span>
-          <span style="background:rgba(26,180,215,0.15);border:1px solid rgba(26,180,215,0.3);color:#1ab4d7;font-size:8px;padding:3px 8px;border-radius:2px;font-family:sans-serif;">MTD ✓</span>
-        </div>
-      </div>`
-    },
-    {
-      id: 3,
-      title: "How I Use Xero to Manage Multi-Currency Accounts",
-      cat: "accounting",
-      excerpt: "Practical tips from handling GBP and BDT accounts simultaneously in Xero — from setup to reconciliation.",
-      content: "",
-      date: "Mar 2026",
-      readTime: "6 min read",
-      featured: false,
-      thumbStyle: "background:linear-gradient(135deg,#051820 0%,#082030 50%,#0a1a28 100%);",
-      thumbContent: `<div style="position:relative;z-index:1;text-align:center;padding:1.2rem;">
-        <div style="color:#1ab4d7;font-size:18px;font-weight:900;letter-spacing:3px;font-family:sans-serif;margin-bottom:10px;">xero</div>
-        <div style="display:flex;gap:8px;justify-content:center;margin-bottom:10px;">
-          <div style="background:rgba(26,180,215,0.12);border:1px solid rgba(26,180,215,0.3);border-radius:4px;padding:6px 10px;text-align:center;">
-            <div style="color:#1ab4d7;font-size:11px;font-weight:700;font-family:sans-serif;">£ GBP</div>
-            <div style="color:#4ade80;font-size:9px;font-family:sans-serif;">↑ +1,240</div>
-          </div>
-          <div style="background:rgba(201,168,76,0.12);border:1px solid rgba(201,168,76,0.3);border-radius:4px;padding:6px 10px;text-align:center;">
-            <div style="color:#C9A84C;font-size:11px;font-weight:700;font-family:sans-serif;">৳ BDT</div>
-            <div style="color:#888;font-size:9px;font-family:sans-serif;">134.2 rate</div>
-          </div>
-          <div style="background:rgba(167,139,250,0.12);border:1px solid rgba(167,139,250,0.3);border-radius:4px;padding:6px 10px;text-align:center;">
-            <div style="color:#a78bfa;font-size:11px;font-weight:700;font-family:sans-serif;">$ USD</div>
-            <div style="color:#f87171;font-size:9px;font-family:sans-serif;">FX var</div>
-          </div>
-        </div>
-        <div style="background:rgba(201,168,76,0.08);border:1px solid rgba(201,168,76,0.2);border-radius:2px;padding:5px 12px;display:inline-block;">
-          <span style="color:#888;font-size:8px;font-family:sans-serif;">Multi-Currency · Bank Recon · FX Gains</span>
-        </div>
-      </div>`
-    }
-  ];
-
-  let posts = [...starterPosts];
-  let activeFilter = 'all';
-
-  function catLabel(cat) {
-    const map = { vat: 'VAT & Tax', accounting: 'Accounting', finance: 'Finance', career: 'Career' };
-    return map[cat] || cat;
-  }
-
-  function renderPosts() {
-    const grid = document.getElementById('postsGrid');
-    const filtered = activeFilter === 'all' ? posts : posts.filter(p => p.cat === activeFilter);
-
-    if (filtered.length === 0) {
-      grid.innerHTML = `<div class="empty-blog">
-        <div class="empty-icon">📝</div>
-        <h3>No posts in this category yet</h3>
-        <p>Check back soon for new articles.</p>
-      </div>`;
-      return;
-    }
-
-    grid.innerHTML = filtered.map((post, i) => `
-      <div class="post-card ${post.featured && i === 0 ? 'featured' : ''} fade-in"
-           style="animation-delay:${i * 0.08}s"
-           onclick="openPost(${post.id})">
-        <div class="post-img ${post.featured && i === 0 ? 'featured-img' : ''}" style="${post.thumbStyle || ''}display:flex;align-items:center;justify-content:center;">
-          ${post.thumbContent || `<div class="post-img-bg"></div><span class="post-img-icon">${post.icon || '📝'}</span>`}
-        </div>
-        <div class="post-body">
-          <div class="post-meta">
-            <span class="post-cat">${catLabel(post.cat)}</span>
-            <span class="post-date">${post.date}</span>
-            <span class="post-read-time">${post.readTime || '3 min read'}</span>
-          </div>
-          <h3 class="post-title">${post.title}</h3>
-          <p class="post-excerpt">${post.excerpt}</p>
-          <a class="post-read">Read More</a>
-        </div>
-      </div>
-    `).join('');
-  }
-
-  function filterPosts(cat, btn) {
-    activeFilter = cat;
-    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-    renderPosts();
-  }
-
-  // Map post id to dedicated article page
-  const postPages = {
-    1: 'blog_post_uk_vat.html',
-    3: 'blog_post_xero.html'
-  };
-
-  function openPost(id) {
-    if (postPages[id]) {
-      window.location.href = postPages[id];
-      return;
-    }
-    const post = posts.find(p => p.id === id);
-    if (!post) return;
-    const overlay = document.createElement('div');
-    overlay.style.cssText = `position:fixed;inset:0;background:rgba(0,0,0,0.92);z-index:500;overflow-y:auto;padding:4rem 6%;`;
-    overlay.innerHTML = `
-      <div style="max-width:720px;margin:0 auto;">
-        <button onclick="this.closest('div[style]').remove()" style="background:none;border:1px solid var(--border);color:var(--muted);padding:0.5rem 1.2rem;border-radius:2px;cursor:pointer;font-family:'DM Sans',sans-serif;margin-bottom:2rem;font-size:0.8rem;letter-spacing:0.1em;text-transform:uppercase;">← Back</button>
-        <span style="display:inline-block;font-size:0.68rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--gold);border:1px solid var(--border);padding:0.25rem 0.6rem;border-radius:2px;margin-bottom:1rem;">${catLabel(post.cat)}</span>
-        <h2 style="font-family:'Playfair Display',serif;font-size:2rem;font-weight:700;color:var(--text);line-height:1.3;margin-bottom:0.6rem;">${post.title}</h2>
-        <p style="font-size:0.78rem;color:var(--muted);margin-bottom:2.5rem;">${post.date} &nbsp;·&nbsp; ${post.readTime}</p>
-        <div style="font-size:1rem;line-height:1.9;color:#B8B4AC;white-space:pre-wrap;">${post.content}</div>
-      </div>`;
-    document.body.appendChild(overlay);
-  }
-
-  renderPosts();
+  // Reading progress bar
+  window.addEventListener('scroll', () => {
+    const doc = document.documentElement;
+    const scrolled = doc.scrollTop;
+    const total = doc.scrollHeight - doc.clientHeight;
+    document.getElementById('progress').style.width = (scrolled / total * 100) + '%';
+  });
 </script>
 </body>
 </html>
