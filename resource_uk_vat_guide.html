@@ -4,20 +4,22 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>UK VAT & Tax Compliance Guide | Fahim Ahmed</title>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,900&family=Caveat:wght@600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
   <style>
     :root {
-      --gold: #C9A84C;
-      --gold-light: #E8C96A;
-      --dark: #0D0D0D;
-      --darker: #080808;
-      --surface: #141414;
-      --surface2: #1C1C1C;
-      --text: #E8E4DC;
-      --muted: #888;
-      --border: rgba(201,168,76,0.2);
-      --border-solid: #222;
-      --success: #4caf88;
+      --gold: #D17A45;
+      --gold-light: #E8B84B;
+      --honey: #E8B84B;
+      --rust: #D17A45;
+      --dark: #17120C;
+      --darker: #110D09;
+      --surface: #1E1812;
+      --surface2: #271F17;
+      --text: #ECE4D4;
+      --muted: #9C9080;
+      --border: rgba(213,138,78,0.22);
+      --border-solid: #34291D;
+      --success: #5BB089;
     }
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
@@ -34,8 +36,8 @@
       content: '';
       position: fixed; inset: 0;
       background:
-        radial-gradient(ellipse 70% 50% at 15% 10%, rgba(201,168,76,0.06) 0%, transparent 60%),
-        radial-gradient(ellipse 50% 40% at 85% 85%, rgba(201,168,76,0.03) 0%, transparent 60%);
+        radial-gradient(ellipse 70% 50% at 15% 10%, rgba(213,138,78,0.06) 0%, transparent 60%),
+        radial-gradient(ellipse 50% 40% at 85% 85%, rgba(213,138,78,0.03) 0%, transparent 60%);
       pointer-events: none; z-index: 0;
     }
 
@@ -44,12 +46,12 @@
       position: fixed; top: 0; left: 0; right: 0; z-index: 100;
       display: flex; align-items: center; justify-content: space-between;
       padding: 1.2rem 6%;
-      background: rgba(8,8,8,0.9);
+      background: rgba(17,13,9,0.82);
       backdrop-filter: blur(14px);
       border-bottom: 1px solid var(--border);
     }
     .nav-logo {
-      font-family: 'Playfair Display', serif;
+      font-family: 'Fraunces', serif;
       font-size: 1.2rem; font-weight: 700;
       color: var(--gold); letter-spacing: 0.05em;
       text-decoration: none;
@@ -83,7 +85,7 @@
       padding: 0.35rem 0.9rem; border-radius: 2px; margin-bottom: 1.5rem;
     }
     .page-hero h1 {
-      font-family: 'Playfair Display', serif;
+      font-family: 'Fraunces', serif;
       font-size: clamp(2.2rem, 5vw, 3.8rem);
       font-weight: 900; line-height: 1.1;
       margin-bottom: 1rem;
@@ -136,7 +138,7 @@
       margin-bottom: 1.25rem;
     }
     .card-title {
-      font-family: 'Playfair Display', serif;
+      font-family: 'Fraunces', serif;
       font-size: 1.6rem; font-weight: 700; line-height: 1.2;
       margin-bottom: 0.75rem;
       color: var(--text);
@@ -207,12 +209,12 @@
     .chapter-list li {
       display: flex; align-items: center; gap: 0.75rem;
       padding: 0.55rem 0;
-      border-bottom: 1px solid rgba(201,168,76,0.08);
+      border-bottom: 1px solid rgba(213,138,78,0.08);
       font-size: 0.8rem; color: var(--muted);
     }
     .chapter-list li:last-child { border-bottom: none; }
     .ch-num {
-      font-family: 'Playfair Display', serif;
+      font-family: 'Fraunces', serif;
       font-size: 0.65rem; font-weight: 700;
       color: var(--gold); opacity: 0.7;
       min-width: 28px;
@@ -246,7 +248,7 @@
     }
     .cs-card {
       background: var(--surface);
-      border: 1px dashed rgba(201,168,76,0.15);
+      border: 1px dashed rgba(213,138,78,0.15);
       border-radius: 4px;
       padding: 1.5rem;
       display: flex; align-items: center; gap: 1rem;
@@ -262,7 +264,7 @@
     .cs-text p { font-size: 0.82rem; color: var(--muted); }
     .cs-text span {
       font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase;
-      color: rgba(201,168,76,0.5);
+      color: rgba(213,138,78,0.5);
     }
 
     /* ── MODAL ── */
@@ -303,7 +305,7 @@
       color: var(--gold); margin-bottom: 0.5rem;
     }
     .modal h2 {
-      font-family: 'Playfair Display', serif;
+      font-family: 'Fraunces', serif;
       font-size: 1.4rem; font-weight: 700; margin-bottom: 0.4rem;
     }
     .modal-sub {
@@ -361,13 +363,13 @@
     .success-state { display: none; text-align: center; }
     .success-icon {
       width: 60px; height: 60px;
-      background: rgba(201,168,76,0.08); border: 1px solid var(--border);
+      background: rgba(213,138,78,0.08); border: 1px solid var(--border);
       border-radius: 50%;
       display: flex; align-items: center; justify-content: center;
       font-size: 1.6rem; margin: 0 auto 1.25rem;
     }
     .success-state h3 {
-      font-family: 'Playfair Display', serif;
+      font-family: 'Fraunces', serif;
       font-size: 1.3rem; margin-bottom: 0.4rem;
     }
     .success-state p { color: var(--muted); font-size: 0.85rem; line-height: 1.65; margin-bottom: 1.75rem; }
@@ -400,7 +402,31 @@
       .nav-links { gap: 1rem; }
       footer { flex-direction: column; gap: 0.75rem; text-align: center; }
     }
-  </style>
+  
+  /* ── STORYBOOK THEME OVERRIDES ── */
+  body { background: var(--darker); }
+  /* faint paper dot-grid texture */
+  body::after{
+    content:''; position:fixed; inset:0; pointer-events:none; z-index:0;
+    background-image: radial-gradient(rgba(213,138,78,0.045) 1px, transparent 1px);
+    background-size: 24px 24px;
+  }
+  /* handwritten honey eyebrow badge (the storybook signature) */
+  .hero-label{
+    font-family:'Caveat', cursive !important;
+    text-transform:none !important; letter-spacing:0 !important;
+    font-size:1.25rem !important; font-weight:700 !important; line-height:1 !important;
+    background:var(--honey) !important; color:#3a2a12 !important;
+    border:none !important; padding:0.3rem 1.1rem 0.45rem !important;
+    border-radius:999px !important;
+  }
+  /* Fraunces optical sizing for big display headings */
+  h1, .hero-name, .page-hero h1, .article-title, .card-title, .rc-title,
+  .blog-hero h1, .modal h2, .success-state h3, .bio-name {
+    font-variation-settings:'opsz' 120; letter-spacing:-0.01em;
+  }
+
+</style>
 </head>
 <body>
 
