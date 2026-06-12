@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fahim Ahmed | Accountant & Tax Specialist</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --gold: #C9A84C;
+    --gold-light: #E8C96A;
+    --dark: #0D0D0D;
+    --darker: #080808;
+    --surface: #141414;
+    --surface2: #1C1C1C;
+    --text: #E8E4DC;
+    --muted: #888;
+    --border: rgba(201,168,76,0.2);
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--darker);
+    color: var(--text);
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1.2rem 6%;
+    background: rgba(8,8,8,0.85);
+    backdrop-filter: blur(14px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem; font-weight: 700;
+    color: var(--gold); letter-spacing: 0.05em;
+    text-decoration: none;
+  }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a {
+    text-decoration: none; color: var(--muted);
+    font-size: 0.82rem; letter-spacing: 0.1em; text-transform: uppercase;
+    transition: color 0.25s;
+  }
+  .nav-links a:hover { color: var(--gold); }
+  .nav-links a.active { color: var(--gold); }
+  .nav-cta {
+    background: var(--gold); color: var(--dark);
+    padding: 0.5rem 1.2rem; border-radius: 2px;
+    font-size: 0.8rem; font-weight: 500; letter-spacing: 0.08em;
+    text-decoration: none; text-transform: uppercase;
+    transition: background 0.2s;
+  }
+  .nav-cta:hover { background: var(--gold-light); }
+
+  /* HERO */
+  #home {
+    min-height: 100vh;
+    display: grid; grid-template-columns: 1fr 1fr;
+    align-items: center; gap: 4rem;
+    padding: 8rem 6% 4rem;
+    position: relative; overflow: hidden;
+  }
+  #home::before {
+    content: '';
+    position: absolute; top: 0; right: 0;
+    width: 55%; height: 100%;
+    background: radial-gradient(ellipse at 80% 40%, rgba(201,168,76,0.07) 0%, transparent 65%);
+    pointer-events: none;
+  }
+  .hero-label {
+    display: inline-block;
+    font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--gold); border: 1px solid var(--border);
+    padding: 0.35rem 0.9rem; border-radius: 2px; margin-bottom: 1.5rem;
+  }
+  .hero-name {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(3rem, 6vw, 5.5rem);
+    font-weight: 900; line-height: 1.05;
+    color: var(--text); margin-bottom: 1rem;
+  }
+  .hero-name span { color: var(--gold); }
+  .hero-tagline {
+    font-size: 1rem; color: var(--muted); line-height: 1.7;
+    max-width: 480px; margin-bottom: 2.5rem;
+  }
+  .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
+  .btn-primary {
+    background: var(--gold); color: var(--dark);
+    padding: 0.75rem 1.8rem; border-radius: 2px;
+    font-weight: 500; text-decoration: none; font-size: 0.85rem;
+    letter-spacing: 0.06em; transition: background 0.2s;
+  }
+  .btn-primary:hover { background: var(--gold-light); }
+  .btn-outline {
+    border: 1px solid var(--border); color: var(--text);
+    padding: 0.75rem 1.8rem; border-radius: 2px;
+    font-size: 0.85rem; text-decoration: none; letter-spacing: 0.06em;
+    transition: border-color 0.2s, color 0.2s;
+  }
+  .btn-outline:hover { border-color: var(--gold); color: var(--gold); }
+
+  .hero-photo-wrap {
+    display: flex; justify-content: center; align-items: center;
+    position: relative;
+  }
+  .hero-photo-wrap::before { display: none; }
+  .hero-photo-wrap::after { display: none; }
+  .hero-photo {
+    width: 100%; max-width: 380px; height: 460px;
+    border-radius: 6px;
+    object-fit: cover; object-position: top center;
+    position: relative; z-index: 1;
+    display: block;
+  }
+
+  /* STATS BAR */
+  .stats-bar {
+    background: var(--surface);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    padding: 2rem 6%;
+    display: flex; justify-content: center; gap: 0;
+  }
+  .stat {
+    text-align: center; flex: 1;
+    padding: 0 2rem;
+    border-right: 1px solid var(--border);
+  }
+  .stat:last-child { border-right: none; }
+  .stat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem; font-weight: 700; color: var(--gold);
+    display: block;
+  }
+  .stat-label { font-size: 0.75rem; color: var(--muted); letter-spacing: 0.1em; text-transform: uppercase; margin-top: 0.3rem; }
+
+  /* SECTIONS */
+  section { padding: 6rem 6%; }
+  .section-tag {
+    font-size: 0.7rem; letter-spacing: 0.25em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 0.8rem;
+  }
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.8rem, 3.5vw, 2.8rem); font-weight: 700;
+    color: var(--text); margin-bottom: 3rem;
+    line-height: 1.2;
+  }
+  .section-title span { color: var(--gold); }
+  .divider {
+    width: 48px; height: 2px;
+    background: var(--gold); margin-bottom: 3rem;
+  }
+
+  /* ABOUT */
+  #about {
+    background: var(--surface);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start; }
+  .about-text p {
+    font-size: 1rem; line-height: 1.85; color: #B8B4AC;
+    margin-bottom: 1.2rem;
+  }
+  .about-text strong { color: var(--gold); font-weight: 500; }
+  .competencies { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 2rem; }
+  .tag {
+    font-size: 0.72rem; letter-spacing: 0.08em;
+    border: 1px solid var(--border); color: var(--muted);
+    padding: 0.4rem 0.9rem; border-radius: 2px;
+    transition: border-color 0.2s, color 0.2s;
+    cursor: default;
+  }
+  .tag:hover { border-color: var(--gold); color: var(--gold); }
+
+  /* EXPERIENCE */
+  .timeline { position: relative; padding-left: 2rem; }
+  .timeline::before {
+    content: '';
+    position: absolute; left: 0; top: 8px; bottom: 8px;
+    width: 1px; background: var(--border);
+  }
+  .tl-item { position: relative; margin-bottom: 3.5rem; }
+  .tl-dot {
+    position: absolute; left: -2rem; top: 6px;
+    width: 10px; height: 10px; border-radius: 50%;
+    background: var(--gold); border: 2px solid var(--darker);
+    margin-left: -4px;
+  }
+  .tl-date {
+    font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 0.4rem;
+  }
+  .tl-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem; font-weight: 700; color: var(--text);
+    margin-bottom: 0.2rem;
+  }
+  .tl-company {
+    font-size: 0.8rem; color: var(--muted); letter-spacing: 0.08em;
+    text-transform: uppercase; margin-bottom: 1rem;
+  }
+  .tl-desc { font-size: 0.9rem; line-height: 1.8; color: #999; }
+  .tl-list { list-style: none; margin-top: 0.8rem; }
+  .tl-list li {
+    font-size: 0.88rem; color: #888; line-height: 1.7; padding-left: 1.2rem;
+    position: relative; margin-bottom: 0.3rem;
+  }
+  .tl-list li::before {
+    content: '—'; position: absolute; left: 0; color: var(--gold);
+    font-size: 0.8rem;
+  }
+
+  /* SKILLS */
+  #skills { background: var(--surface); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+  .skills-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+  .skill-card {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    padding: 1.8rem;
+    border-radius: 4px;
+    transition: border-color 0.25s, transform 0.25s;
+  }
+  .skill-card:hover { border-color: var(--gold); transform: translateY(-3px); }
+  .skill-icon { font-size: 1.5rem; margin-bottom: 0.8rem; }
+  .skill-name {
+    font-size: 0.9rem; font-weight: 500; color: var(--text);
+    margin-bottom: 0.4rem;
+  }
+  .skill-desc { font-size: 0.78rem; color: var(--muted); line-height: 1.6; }
+
+  /* EDUCATION */
+  .edu-card {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    padding: 2rem 2.5rem;
+    border-radius: 4px;
+    display: grid; grid-template-columns: auto 1fr;
+    gap: 2rem; align-items: center;
+    max-width: 700px;
+  }
+  .edu-icon {
+    width: 56px; height: 56px; background: var(--border);
+    border-radius: 50%; display: flex; align-items: center;
+    justify-content: center; font-size: 1.5rem;
+    border: 1px solid var(--border);
+  }
+  .edu-degree {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem; font-weight: 700; color: var(--text);
+    margin-bottom: 0.3rem;
+  }
+  .edu-school { font-size: 0.85rem; color: var(--gold); margin-bottom: 0.3rem; }
+  .edu-meta { font-size: 0.8rem; color: var(--muted); }
+
+  /* CONTACT */
+  #contact { background: var(--surface); border-top: 1px solid var(--border); }
+  .contact-inner {
+    max-width: 700px; margin: 0 auto; text-align: center;
+  }
+  .contact-inner .section-tag { justify-content: center; display: block; }
+  .contact-inner .section-title { text-align: center; }
+  .contact-inner p {
+    color: var(--muted); font-size: 1rem; line-height: 1.8;
+    margin-bottom: 2.5rem;
+  }
+  .contact-links { display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap; }
+  .contact-link {
+    display: flex; align-items: center; gap: 0.7rem;
+    border: 1px solid var(--border);
+    padding: 0.9rem 2rem; border-radius: 2px;
+    text-decoration: none; color: var(--text);
+    font-size: 0.85rem; letter-spacing: 0.05em;
+    transition: border-color 0.2s, color 0.2s, background 0.2s;
+  }
+  .contact-link:hover { border-color: var(--gold); color: var(--gold); background: rgba(201,168,76,0.05); }
+  .contact-link svg { width: 18px; height: 18px; fill: currentColor; }
+
+  /* FOOTER */
+  footer {
+    padding: 2rem 6%;
+    display: flex; justify-content: space-between; align-items: center;
+    border-top: 1px solid var(--border);
+  }
+  footer p { font-size: 0.78rem; color: var(--muted); }
+  footer a { color: var(--gold); text-decoration: none; font-size: 0.78rem; }
+
+  /* ANIMATIONS */
+  .fade-in {
+    opacity: 0; transform: translateY(24px);
+    animation: fadeUp 0.7s ease forwards;
+  }
+  .fade-in:nth-child(1) { animation-delay: 0.1s; }
+  .fade-in:nth-child(2) { animation-delay: 0.25s; }
+  .fade-in:nth-child(3) { animation-delay: 0.4s; }
+  .fade-in:nth-child(4) { animation-delay: 0.55s; }
+  @keyframes fadeUp {
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* MOBILE */
+  @media (max-width: 768px) {
+    #home { grid-template-columns: 1fr; text-align: center; padding-top: 7rem; }
+    .hero-photo-wrap { order: -1; }
+    .hero-tagline { margin: 0 auto 2.5rem; }
+    .hero-btns { justify-content: center; }
+    .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+    .skills-grid { grid-template-columns: 1fr 1fr; }
+    .stats-bar { flex-wrap: wrap; gap: 1rem; }
+    .stat { border-right: none; border-bottom: 1px solid var(--border); }
+    .stat:last-child { border-bottom: none; }
+    nav { padding: 1rem 4%; }
+    .nav-links { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#home" class="nav-logo">FA</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#education">Education</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li><a href="fahim_ahmed_blog.html" style="color:var(--gold);font-weight:500;">Blog</a></li>
+    <li><a href="resources.html" style="color:var(--gold-light);font-weight:500;">Resources ✦</a></li>
+  </ul>
+  <a href="https://www.linkedin.com/in/fahim-ahmedz/" target="_blank" class="nav-cta">Connect →</a>
+</nav>
+
+<!-- HERO -->
+<section id="home">
+  <div>
+    <div class="hero-label fade-in">Accounting · VAT · Taxation</div>
+    <h1 class="hero-name fade-in">Fahim<br><span>Ahmed</span></h1>
+    <p class="hero-tagline fade-in">4+ Years of Financial Expertise across Bangladesh & UK. Team Leader – Accounts & Finance at Staff Asia, specialising in UK VAT, Corporation Tax, and multi-entity financial reporting.</p>
+    <div class="hero-btns fade-in">
+      <a href="#contact" class="btn-primary">Get In Touch</a>
+      <a href="#experience" class="btn-outline">View Experience</a>
+    </div>
+  </div>
+  <div class="hero-photo-wrap">
+    <img src="Fahim_Ahmed.jpeg" alt="Fahim Ahmed" class="hero-photo"
+         onerror="this.style.background='#1c1c1c'; this.style.display='flex'; this.alt='FA'">
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats-bar">
+  <div class="stat">
+    <span class="stat-num">4+</span>
+    <span class="stat-label">Years Experience</span>
+  </div>
+  <div class="stat">
+    <span class="stat-num">100+</span>
+    <span class="stat-label">UK VAT & Tax Filings</span>
+  </div>
+  <div class="stat">
+    <span class="stat-num">2</span>
+    <span class="stat-label">Regulatory Frameworks</span>
+  </div>
+  <div class="stat">
+    <span class="stat-num">BD & UK</span>
+    <span class="stat-label">Compliance Expertise</span>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="about-grid">
+    <div>
+      <p class="section-tag">About Me</p>
+      <h2 class="section-title">Accountant &<br><span>Tax Specialist</span></h2>
+      <div class="divider"></div>
+      <div class="about-text">
+        <p>I am a <strong>4+ year experienced Accountant</strong> specialising in Accounting, VAT, and Taxation across both Bangladeshi and UK regulatory frameworks. Currently serving as <strong>Team Leader – Accounts & Finance at Staff Asia</strong>, a fast-growing EdTech organisation.</p>
+        <p>My expertise spans UK statutory accounts preparation, CT600 Corporation Tax filings, VAT compliance, multi-entity bookkeeping, and financial reporting. I have hands-on experience managing <strong>100+ UK VAT & Corporation Tax filings</strong> and am proficient in cloud accounting platforms including Xero and QuickBooks.</p>
+        <p>Based in <strong>Sylhet, Bangladesh</strong>, I bridge the gap between BD and UK regulatory frameworks — bringing rigour, efficiency, and leadership to every finance function I work with.</p>
+      </div>
+    </div>
+    <div>
+      <p class="section-tag">Key Competencies</p>
+      <h2 class="section-title">What I<br><span>Bring</span></h2>
+      <div class="divider"></div>
+      <div class="competencies">
+        <span class="tag">BD VAT & Turnover Tax</span>
+        <span class="tag">UK VAT & Corporate Tax</span>
+        <span class="tag">Tax Planning & Compliance</span>
+        <span class="tag">Financial Reporting</span>
+        <span class="tag">A/P & A/R Management</span>
+        <span class="tag">Financial Statement Analysis</span>
+        <span class="tag">Data Analysis & Visualization</span>
+        <span class="tag">Xero Expert</span>
+        <span class="tag">QuickBooks Expert</span>
+        <span class="tag">Cash Flow Forecasting</span>
+        <span class="tag">Budgeting & Forecasting</span>
+        <span class="tag">Internal Auditing & Control</span>
+        <span class="tag">Regulatory Compliance (BD & UK)</span>
+        <span class="tag">Multi-Currency Transactions</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <p class="section-tag">Career</p>
+  <h2 class="section-title">Professional<br><span>Experience</span></h2>
+  <div class="divider"></div>
+  <div class="timeline">
+
+    <!-- STAFF ASIA GROUP -->
+    <div class="tl-item">
+      <div class="tl-dot" style="background:var(--gold);width:14px;height:14px;margin-left:-6px;border:2px solid var(--darker);"></div>
+      <div style="display:flex;align-items:center;gap:0.8rem;margin-bottom:0.4rem;">
+        <span style="font-size:0.7rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--gold);border:1px solid var(--border);padding:0.25rem 0.7rem;border-radius:2px;">Current Employer</span>
+        <span style="font-size:0.72rem;color:var(--muted);">2 yrs 11 mos total</span>
+      </div>
+      <h3 class="tl-title" style="font-size:1.5rem;">Staff Asia</h3>
+      <p style="font-size:0.78rem;color:var(--muted);letter-spacing:0.06em;text-transform:uppercase;margin-bottom:1.5rem;">EdTech · Full-time</p>
+
+      <!-- Role 1: Team Leader -->
+      <div style="border-left:2px solid rgba(201,168,76,0.25);padding-left:1.5rem;margin-bottom:2rem;">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:0.5rem;margin-bottom:0.4rem;">
+          <h4 style="font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;color:var(--text);">Team Leader – Accounts & Finance</h4>
+          <span class="tl-date" style="font-size:0.72rem;">Jul 2025 – Present · 1 yr</span>
+        </div>
+        <p class="tl-desc">Led the accounts and finance team, ensuring efficient financial operations and accurate reporting across multiple entities. Managed VAT and corporate tax compliance for UK clients while supervising daily accounting activities including bookkeeping, reconciliations, and financial statement preparation. Collaborated with cross-functional teams to improve financial processes and support strategic decision-making.</p>
+        <ul class="tl-list" style="margin-top:0.8rem;">
+          <li>Successfully managed <strong>100+ UK VAT & Corporation Tax filings</strong>, ensuring full compliance with HMRC regulations</li>
+          <li>Supervised and guided the accounts team, improving team productivity and performance</li>
+          <li>Developed and implemented <strong>SOPs</strong> to streamline accounting workflows and enhance operational efficiency</li>
+          <li>Strengthened internal controls and reporting accuracy across multiple company accounts</li>
+          <li>Contributed to achieving multiple <strong>"Team of the Month" awards</strong> through strong leadership and teamwork</li>
+          <li>Contributed to <strong>Corporation Tax computations and filings (CT600)</strong> for multiple UK companies</li>
+          <li>Collaborated with senior team members and external stakeholders to ensure regulatory compliance and reporting accuracy</li>
+        </ul>
+      </div>
+
+      <!-- Role 2: Trainee Team Leader -->
+      <div style="border-left:2px solid rgba(201,168,76,0.15);padding-left:1.5rem;margin-bottom:2rem;">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:0.5rem;margin-bottom:0.4rem;">
+          <h4 style="font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;color:var(--text);">Trainee Team Leader – Accounts & Finance</h4>
+          <span class="tl-date" style="font-size:0.72rem;">Oct 2024 – Jun 2025 · 9 mos</span>
+        </div>
+        <p class="tl-desc">Supported the accounts and finance function with a strong focus on UK-based accounting and taxation. Gained hands-on experience in managing financial records, preparing statutory accounts, and ensuring compliance with UK regulations. Assisted in handling multi-entity accounting operations while working with cloud-based accounting systems to maintain accuracy and efficiency.</p>
+        <ul class="tl-list" style="margin-top:0.8rem;">
+          <li>Assisted in the preparation of <strong>UK statutory accounts</strong> in line with FRS 102 / FRS 105 standards</li>
+          <li>Supported <strong>UK VAT return preparation and submission</strong>, ensuring compliance with HMRC regulations</li>
+          <li>Contributed to <strong>CT600 Corporation Tax computations and filings</strong> for multiple UK companies</li>
+          <li>Managed bookkeeping for UK clients using <strong>Xero and QuickBooks</strong>, including bank reconciliation and ledger maintenance</li>
+          <li>Assisted in preparing management accounts and financial reports for decision-making</li>
+          <li>Handled <strong>AP and AR processes</strong>, ensuring timely invoicing and payments</li>
+          <li>Worked with <strong>multi-currency transactions</strong> and maintained accurate financial records across multiple entities</li>
+        </ul>
+      </div>
+
+      <!-- Role 3: Executive -->
+      <div style="border-left:2px solid rgba(201,168,76,0.15);padding-left:1.5rem;">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:0.5rem;margin-bottom:0.4rem;">
+          <h4 style="font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;color:var(--text);">Executive – Accounts & Finance</h4>
+          <span class="tl-date" style="font-size:0.72rem;">Aug 2023 – Oct 2024 · 1 yr 3 mos</span>
+        </div>
+        <p class="tl-desc">Managed financial operations within a fast-growing EdTech environment, supporting multi-platform revenue tracking and instructor payment processes. Worked extensively with data from CMS platforms like WordPress and Shopify to ensure accurate financial reporting and reconciliation.</p>
+        <ul class="tl-list" style="margin-top:0.8rem;">
+          <li>Collected and consolidated financial data from <strong>WordPress and Shopify</strong> for accurate reporting and reconciliation</li>
+          <li>Calculated and processed monthly <strong>instructor payments</strong> based on course performance and compensation models</li>
+          <li>Managed payment processing across <strong>Stripe, PayPal, and bank transfers</strong>; resolved discrepancies and failed transactions</li>
+          <li>Monitored platform revenues and ensured alignment between CMS data and financial records</li>
+          <li>Maintained organised records of transactions and payment statuses for audit and reporting purposes</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- NURJAHAN HOSPITAL -->
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <p class="tl-date">Feb 2022 – Jul 2023 · 1 yr 6 mos</p>
+      <h3 class="tl-title">Junior Accountant</h3>
+      <p class="tl-company">Nurjahan (Private) Hospital · Moulvibazar, Sylhet</p>
+      <p class="tl-desc">Supported day-to-day accounting operations in a healthcare environment, ensuring accurate financial record-keeping and smooth transaction processing. Gained hands-on experience in bookkeeping, reconciliations, payroll, and financial reporting.</p>
+      <ul class="tl-list">
+        <li>Processed daily financial transactions — invoices, payments, and journal entries — with high accuracy</li>
+        <li>Maintained and updated <strong>general ledger accounts</strong>, ensuring proper classification of financial data</li>
+        <li>Performed regular <strong>bank reconciliations</strong> to identify and resolve discrepancies</li>
+        <li>Managed <strong>accounts payable and receivable</strong>, ensuring timely billing and collections</li>
+        <li>Assisted in <strong>payroll processing</strong>, verifying employee data and ensuring accurate salary disbursement</li>
+        <li>Supported preparation of monthly <strong>financial statements</strong> and management reports</li>
+        <li>Maintained documentation and filing of financial records for audit and compliance purposes</li>
+      </ul>
+    </div>
+
+    <!-- BONGO INTERN -->
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <p class="tl-date">Oct 2021 – Jan 2022 · 4 mos</p>
+      <h3 class="tl-title">Intern – Compliance</h3>
+      <p class="tl-company">Bongo · Full-time · Digital Content Network</p>
+      <p class="tl-desc">Supported the compliance function of a leading digital content network, ensuring adherence to platform policies across YouTube and Facebook. Gained hands-on experience in content compliance, risk assessment, and internal control processes.</p>
+      <ul class="tl-list">
+        <li>Assisted in developing compliance programs aligned with <strong>YouTube and Facebook</strong> content and monetization policies</li>
+        <li>Conducted <strong>audits of digital content</strong> and channels to identify compliance risks and policy violations</li>
+        <li>Drafted compliance reports and documentation for internal stakeholders and management review</li>
+        <li>Helped organise and deliver <strong>training sessions</strong> for content creators on platform policies and best practices</li>
+        <li>Supported crisis management by assisting in handling compliance violations and risk mitigation actions</li>
+      </ul>
+    </div>
+
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <p class="section-tag">Expertise</p>
+  <h2 class="section-title">Areas of<br><span>Specialisation</span></h2>
+  <div class="divider"></div>
+  <div class="skills-grid">
+    <div class="skill-card">
+      <div class="skill-icon">🧾</div>
+      <p class="skill-name">BD VAT & Tax</p>
+      <p class="skill-desc">In-depth knowledge of Bangladeshi Corporate Tax, VAT, and Turnover Tax regulatory frameworks.</p>
+    </div>
+    <div class="skill-card">
+      <div class="skill-icon">🇬🇧</div>
+      <p class="skill-name">UK VAT & Corporation Tax</p>
+      <p class="skill-desc">100+ UK VAT and Corporation Tax filings with compliance expertise for UK-based businesses.</p>
+    </div>
+    <div class="skill-card">
+      <div class="skill-icon">📊</div>
+      <p class="skill-name">Financial Reporting</p>
+      <p class="skill-desc">Preparation of final accounts, financial statements, and management reports.</p>
+    </div>
+    <div class="skill-card">
+      <div class="skill-icon">🔧</div>
+      <p class="skill-name">Xero & QuickBooks</p>
+      <p class="skill-desc">Expert-level proficiency in cloud accounting platforms for efficient bookkeeping and reporting.</p>
+    </div>
+    <div class="skill-card">
+      <div class="skill-icon">📈</div>
+      <p class="skill-name">Budgeting & Forecasting</p>
+      <p class="skill-desc">Cash flow forecasting, budgeting, and financial planning to support business decisions.</p>
+    </div>
+    <div class="skill-card">
+      <div class="skill-icon">🔍</div>
+      <p class="skill-name">Internal Auditing</p>
+      <p class="skill-desc">Internal audit and control frameworks ensuring regulatory compliance across BD and UK jurisdictions.</p>
+    </div>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section id="education">
+  <p class="section-tag">Education</p>
+  <h2 class="section-title">Academic<br><span>Background</span></h2>
+  <div class="divider"></div>
+  <div class="edu-card">
+    <div class="edu-icon">🎓</div>
+    <div>
+      <p class="edu-degree">BBA – Accounting</p>
+      <p class="edu-school">Bangladesh University of Professionals (Army IBA, Sylhet)</p>
+      <p class="edu-meta">2018 – 2021</p>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-inner">
+    <p class="section-tag">Get In Touch</p>
+    <h2 class="section-title">Let's<br><span>Connect</span></h2>
+    <div class="divider" style="margin: 0 auto 2rem;"></div>
+    <p>Open to professional enquiries, collaboration, and new opportunities in accounting, VAT, and financial management across Bangladesh and the UK.</p>
+    <div class="contact-links">
+      <a href="https://www.linkedin.com/in/fahim-ahmedz/" target="_blank" class="contact-link">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+        LinkedIn
+      </a>
+      <a href="mailto:fahimacco@gmail.com" class="contact-link">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M24 5.457v13.909c0 .904-.732 1.636-1.636 1.636h-3.819V11.73L12 16.64l-6.545-4.91v9.273H1.636A1.636 1.636 0 0 1 0 19.366V5.457c0-2.023 2.309-3.178 3.927-1.964L5.455 4.64 12 9.548l6.545-4.907 1.528-1.148C21.69 2.28 24 3.434 24 5.457z"/></svg>
+        fahimacco@gmail.com
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2026 Fahim Ahmed. All rights reserved.</p>
+  <div style="display:flex;gap:1.5rem;">
+    <a href="fahim_ahmed_blog.html">Blog →</a>
+    <a href="https://www.linkedin.com/in/fahim-ahmedz/" target="_blank">LinkedIn →</a>
+  </div>
+</footer>
+
+</body>
+</html>
